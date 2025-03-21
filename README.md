@@ -1,29 +1,30 @@
-# Teclado Virtual 🎹
+# Teclado Virtual 
 
 ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Material-UI](https://img.shields.io/badge/Material--UI-5.15.0-0081CB?style=for-the-badge&logo=mui&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
+![image](https://github.com/user-attachments/assets/ea73248d-0cca-4e6d-b8f2-78a59cece5b8)
+
+
 Bem-vindo ao **Teclado Virtual**, um projeto desenvolvido com React e Material-UI que oferece uma experiência de digitação interativa e responsiva. Este teclado virtual foi projetado para ser funcional, esteticamente agradável e altamente personalizável, com transições suaves, temas claro/escuro, som de tecla, e suporte a diferentes layouts (letras e símbolos).
 
 ## 📋 Visão Geral
-![image](https://github.com/user-attachments/assets/245e8d1b-53be-48d5-acb1-22fd85c6562b)
-
+![image](https://github.com/user-attachments/assets/b2d736a3-c7e1-4f6d-8819-13b0df0e6c89)
 
 O Teclado Virtual é uma aplicação web que simula um teclado físico, permitindo que os usuários digitem texto em um campo de entrada. Ele foi criado como parte de um portfólio de programação, com o objetivo de demonstrar habilidades em React, Material-UI, CSS responsivo, e boas práticas de desenvolvimento.
 
 ### 🎯 Funcionalidades Principais
 
+- **Layout Responsivo**: O teclado se adapta a diferentes tamanhos de tela (desktop e celular) com transições suaves e graduais.
 ![image](https://github.com/user-attachments/assets/4a2762be-aae4-42c3-9a33-1a369930a88f)
 
-- **Layout Responsivo**: O teclado se adapta a diferentes tamanhos de tela (desktop e celular) com transições suaves e graduais.
-
+- **Temas Claro/Escuro**: Alterne entre temas claro e escuro com um botão estilizado (ícones de sol e lua).
   ![image](https://github.com/user-attachments/assets/be6693ba-a4b9-4d4f-81c4-6303204f2b3f)
 
-- **Temas Claro/Escuro**: Alterne entre temas claro e escuro com um botão estilizado (ícones de sol e lua).
-- **Som de Tecla**: Cada clique em uma tecla reproduz um som de digitação realista.
 
+- **Som de Tecla**: Cada clique em uma tecla reproduz um som de digitação realista.
   ![image](https://github.com/user-attachments/assets/9ea3a7e4-2ce4-47b1-9eb3-58780a82a75c)
 
 - **Modo de Símbolos**: Alterne entre letras e números/símbolos com o botão `?123`.
