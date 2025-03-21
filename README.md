@@ -8,14 +8,24 @@
 Bem-vindo ao **Teclado Virtual**, um projeto desenvolvido com React e Material-UI que oferece uma experiência de digitação interativa e responsiva. Este teclado virtual foi projetado para ser funcional, esteticamente agradável e altamente personalizável, com transições suaves, temas claro/escuro, som de tecla, e suporte a diferentes layouts (letras e símbolos).
 
 ## 📋 Visão Geral
+![image](https://github.com/user-attachments/assets/245e8d1b-53be-48d5-acb1-22fd85c6562b)
+
 
 O Teclado Virtual é uma aplicação web que simula um teclado físico, permitindo que os usuários digitem texto em um campo de entrada. Ele foi criado como parte de um portfólio de programação, com o objetivo de demonstrar habilidades em React, Material-UI, CSS responsivo, e boas práticas de desenvolvimento.
 
 ### 🎯 Funcionalidades Principais
 
+![image](https://github.com/user-attachments/assets/4a2762be-aae4-42c3-9a33-1a369930a88f)
+
 - **Layout Responsivo**: O teclado se adapta a diferentes tamanhos de tela (desktop e celular) com transições suaves e graduais.
+
+  ![image](https://github.com/user-attachments/assets/be6693ba-a4b9-4d4f-81c4-6303204f2b3f)
+
 - **Temas Claro/Escuro**: Alterne entre temas claro e escuro com um botão estilizado (ícones de sol e lua).
 - **Som de Tecla**: Cada clique em uma tecla reproduz um som de digitação realista.
+
+  ![image](https://github.com/user-attachments/assets/9ea3a7e4-2ce4-47b1-9eb3-58780a82a75c)
+
 - **Modo de Símbolos**: Alterne entre letras e números/símbolos com o botão `?123`.
 - **Ícones do Material-UI**: Teclas especiais como `Enter`, `Shift`, `Backspace`, e `Space` possuem ícones correspondentes.
 - **Transparência**: O teclado e os botões possuem transparência para um visual moderno.
@@ -70,23 +80,8 @@ O teclado se ajusta automaticamente para telas de desktop e celular.
 📐 Estrutura do Projeto
 A estrutura do projeto é organizada da seguinte forma:
 
-teclado-virtual/
-  ├── node_modules/          # Dependências do projeto
-  ├── public/               # Arquivos públicos
-  │   ├── index.html        # Arquivo HTML principal
-  │   └── key-click.mp3     # Som de clique das teclas
-  ├── src/                  # Código-fonte do projeto
-  │   ├── components/       # Componentes React
-  │   │   ├── Key.js        # Componente para cada tecla
-  │   │   └── Keyboard.js   # Componente principal do teclado
-  │   ├── css/              # Estilos CSS
-  │   │   └── Keyboard.css  # Estilos do teclado
-  │   ├── App.js            # Componente principal da aplicação
-  │   ├── App.css           # Estilos do App
-  │   └── index.js          # Ponto de entrada da aplicação
-  ├── package.json          # Configurações e dependências do projeto
-  ├── package-lock.json     # Lockfile das dependências
-  └── README.md             # Documentação do projeto
+  ![image](https://github.com/user-attachments/assets/0d98b6d1-73f6-4d1a-b9a6-b279c6417344)
+
 
 🎨 Estilização e Responsividade
 Transições Suaves: O layout usa transições CSS (transition: all 0.3s ease-in-out) para animar mudanças de tamanho, margem, padding, e cores.
