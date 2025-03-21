@@ -11,7 +11,6 @@
 Bem-vindo ao **Teclado Virtual**, um projeto desenvolvido com React e Material-UI que oferece uma experiência de digitação interativa e responsiva. Este teclado virtual foi projetado para ser funcional, esteticamente agradável e altamente personalizável, com transições suaves, temas claro/escuro, som de tecla, e suporte a diferentes layouts (letras e símbolos).
 
 ## 📋 Visão Geral
-![image](https://github.com/user-attachments/assets/b2d736a3-c7e1-4f6d-8819-13b0df0e6c89)
 
 O Teclado Virtual é uma aplicação web que simula um teclado físico, permitindo que os usuários digitem texto em um campo de entrada. Ele foi criado como parte de um portfólio de programação, com o objetivo de demonstrar habilidades em React, Material-UI, CSS responsivo, e boas práticas de desenvolvimento.
 
@@ -25,9 +24,7 @@ O Teclado Virtual é uma aplicação web que simula um teclado físico, permitin
 
 
 - **Som de Tecla**: Cada clique em uma tecla reproduz um som de digitação realista.
-  ![image](https://github.com/user-attachments/assets/9ea3a7e4-2ce4-47b1-9eb3-58780a82a75c)
-
-- **Modo de Símbolos**: Alterne entre letras e números/símbolos com o botão `?123`.
+ - **Modo de Símbolos**: Alterne entre letras e números/símbolos com o botão `?123`.
 - **Ícones do Material-UI**: Teclas especiais como `Enter`, `Shift`, `Backspace`, e `Space` possuem ícones correspondentes.
 - **Transparência**: O teclado e os botões possuem transparência para um visual moderno.
 - **Transições Suaves**: Todas as mudanças de layout e tema são animadas com transições CSS suaves.
