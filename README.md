@@ -1,9 +1,12 @@
-# Teclado Virtual 🎹
+# Teclado Virtual 
 
 ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Material-UI](https://img.shields.io/badge/Material--UI-5.15.0-0081CB?style=for-the-badge&logo=mui&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+![image](https://github.com/user-attachments/assets/ea73248d-0cca-4e6d-b8f2-78a59cece5b8)
+
 
 Bem-vindo ao **Teclado Virtual**, um projeto desenvolvido com React e Material-UI que oferece uma experiência de digitação interativa e responsiva. Este teclado virtual foi projetado para ser funcional, esteticamente agradável e altamente personalizável, com transições suaves, temas claro/escuro, som de tecla, e suporte a diferentes layouts (letras e símbolos).
 
@@ -14,9 +17,14 @@ O Teclado Virtual é uma aplicação web que simula um teclado físico, permitin
 ### 🎯 Funcionalidades Principais
 
 - **Layout Responsivo**: O teclado se adapta a diferentes tamanhos de tela (desktop e celular) com transições suaves e graduais.
+![image](https://github.com/user-attachments/assets/4a2762be-aae4-42c3-9a33-1a369930a88f)
+
 - **Temas Claro/Escuro**: Alterne entre temas claro e escuro com um botão estilizado (ícones de sol e lua).
+  ![image](https://github.com/user-attachments/assets/be6693ba-a4b9-4d4f-81c4-6303204f2b3f)
+
+
 - **Som de Tecla**: Cada clique em uma tecla reproduz um som de digitação realista.
-- **Modo de Símbolos**: Alterne entre letras e números/símbolos com o botão `?123`.
+ - **Modo de Símbolos**: Alterne entre letras e números/símbolos com o botão `?123`.
 - **Ícones do Material-UI**: Teclas especiais como `Enter`, `Shift`, `Backspace`, e `Space` possuem ícones correspondentes.
 - **Transparência**: O teclado e os botões possuem transparência para um visual moderno.
 - **Transições Suaves**: Todas as mudanças de layout e tema são animadas com transições CSS suaves.
@@ -70,23 +78,8 @@ O teclado se ajusta automaticamente para telas de desktop e celular.
 📐 Estrutura do Projeto
 A estrutura do projeto é organizada da seguinte forma:
 
-teclado-virtual/
-  ├── node_modules/          # Dependências do projeto
-  ├── public/               # Arquivos públicos
-  │   ├── index.html        # Arquivo HTML principal
-  │   └── key-click.mp3     # Som de clique das teclas
-  ├── src/                  # Código-fonte do projeto
-  │   ├── components/       # Componentes React
-  │   │   ├── Key.js        # Componente para cada tecla
-  │   │   └── Keyboard.js   # Componente principal do teclado
-  │   ├── css/              # Estilos CSS
-  │   │   └── Keyboard.css  # Estilos do teclado
-  │   ├── App.js            # Componente principal da aplicação
-  │   ├── App.css           # Estilos do App
-  │   └── index.js          # Ponto de entrada da aplicação
-  ├── package.json          # Configurações e dependências do projeto
-  ├── package-lock.json     # Lockfile das dependências
-  └── README.md             # Documentação do projeto
+  ![image](https://github.com/user-attachments/assets/0d98b6d1-73f6-4d1a-b9a6-b279c6417344)
+
 
 🎨 Estilização e Responsividade
 Transições Suaves: O layout usa transições CSS (transition: all 0.3s ease-in-out) para animar mudanças de tamanho, margem, padding, e cores.
