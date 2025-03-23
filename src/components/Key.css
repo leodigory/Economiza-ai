@@ -1,0 +1,142 @@
+/* Importar Material Icons */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Estilos globais */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+}
+
+.material-icons {
+  font-size: 24px;
+  color: inherit; /* Herda a cor do tema (preto no modo claro, branco no modo escuro) */
+}
+
+.key {
+  height: 50px; /* Maior em telas grandes */
+  width: 6%; /* Teclas normais ocupam mais espaço em telas grandes */
+  max-width: 100px; /* Aumentado para telas grandes */
+  margin: 4px;
+  border-radius: 4px;
+  border: none;
+  font-size: 1.2rem; /* Maior em telas grandes */
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.key:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.key:active {
+    background: rgba(255, 255, 255, 0.12) !important;
+    transform: scale(0.95); /* Efeito de pressionamento */
+  }
+
+.key.wide {
+  width: 15%; /* Teclas largas ocupam mais espaço em telas grandes */
+  max-width: 150px;
+}
+
+.key.extraWide {
+  width: 50%; /* Tecla de espaço ocupa mais espaço em telas grandes */
+  max-width: 600px;
+}
+
+.key.activatable::after {
+  content: '';
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.key.active::after {
+  background: #08ff00;
+}
+
+.key.dark {
+  background: rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Responsividade para telas menores que 600px */
+@media (max-width: 600px) {
+  .keyboard {
+    padding: 5px 0;
+  }
+
+  .key {
+    height: 40px;
+    font-size: 0.9rem;
+    width: 8%;
+    max-width: 50px;
+    margin: 2px;
+  }
+
+  .key.extraWide {
+    width: 40%;
+    max-width: 300px;
+  }
+
+  .key.wide {
+    width: 12%;
+    max-width: 100px;
+  }
+
+  .key:not(.wide):not(.extraWide) {
+    width: 8%;
+  }
+
+  .key.activatable::after {
+    top: 8px;
+    right: 8px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .material-icons {
+    font-size: 20px; /* Ícones menores em telas pequenas */
+  }
+}
+
+/* Ajustes para telas grandes (acima de 600px) */
+@media (min-width: 601px) {
+  .keyboard {
+    padding: 10px 0; /* Mais padding em telas grandes */
+  }
+
+  .key {
+    height: 50px;
+    width: 6%;
+    max-width: 100px;
+    margin: 4px;
+    font-size: 1.2rem;
+  }
+
+  .key.wide {
+    width: 15%;
+    max-width: 150px;
+  }
+
+  .key.extraWide {
+    width: 40%;
+    max-width: 600px;
+  }
+
+  .material-icons {
+    font-size: 24px;
+  }
+}
+
