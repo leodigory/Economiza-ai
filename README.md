@@ -5,25 +5,28 @@
 ![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-![image](https://github.com/user-attachments/assets/ea73248d-0cca-4e6d-b8f2-78a59cece5b8)
+![image](https://github.com/user-attachments/assets/01b4f1d6-c1c8-4774-9371-3cab01353949)
 
 
 Bem-vindo ao **Teclado Virtual**, um projeto desenvolvido com React e Material-UI que oferece uma experiência de digitação interativa e responsiva. Este teclado virtual foi projetado para ser funcional, esteticamente agradável e altamente personalizável, com transições suaves, temas claro/escuro, som de tecla, e suporte a diferentes layouts (letras e símbolos).
 
 ## 📋 Visão Geral
+![image](https://github.com/user-attachments/assets/0aae0319-df5f-4952-84a0-1d263df723b4)
+
 
 O Teclado Virtual é uma aplicação web que simula um teclado físico, permitindo que os usuários digitem texto em um campo de entrada. Ele foi criado como parte de um portfólio de programação, com o objetivo de demonstrar habilidades em React, Material-UI, CSS responsivo, e boas práticas de desenvolvimento.
 
 ### 🎯 Funcionalidades Principais
 
 - **Layout Responsivo**: O teclado se adapta a diferentes tamanhos de tela (desktop e celular) com transições suaves e graduais.
-![image](https://github.com/user-attachments/assets/4a2762be-aae4-42c3-9a33-1a369930a88f)
+![image](https://github.com/user-attachments/assets/e181c80a-205e-42f0-8628-23732159bf4e)
+
 
 - **Temas Claro/Escuro**: Alterne entre temas claro e escuro com um botão estilizado (ícones de sol e lua).
-  ![image](https://github.com/user-attachments/assets/be6693ba-a4b9-4d4f-81c4-6303204f2b3f)
+  ![image](https://github.com/user-attachments/assets/cedaae25-98da-49a6-808f-76e57c0aa903)
+![image](https://github.com/user-attachments/assets/8a6128de-e8eb-4c10-87c3-e1fdab7f8339)
 
 
-- **Som de Tecla**: Cada clique em uma tecla reproduz um som de digitação realista.
  - **Modo de Símbolos**: Alterne entre letras e números/símbolos com o botão `?123`.
 - **Ícones do Material-UI**: Teclas especiais como `Enter`, `Shift`, `Backspace`, e `Space` possuem ícones correspondentes.
 - **Transparência**: O teclado e os botões possuem transparência para um visual moderno.
