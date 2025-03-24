@@ -19,7 +19,8 @@ O Teclado Virtual é uma aplicação web que simula um teclado físico, permitin
 ### 🎯 Funcionalidades Principais
 
 - **Layout Responsivo**: O teclado se adapta a diferentes tamanhos de tela (desktop e celular) com transições suaves e graduais.
-![image](https://github.com/user-attachments/assets/e181c80a-205e-42f0-8628-23732159bf4e)
+![image](https://github.com/user-attachments/assets/9d2017ad-e3e6-4c32-8087-9f5a672bfde2)
+
 
 
 - **Temas Claro/Escuro**: Alterne entre temas claro e escuro com um botão estilizado (ícones de sol e lua).
@@ -81,7 +82,8 @@ O teclado se ajusta automaticamente para telas de desktop e celular.
 📐 Estrutura do Projeto
 A estrutura do projeto é organizada da seguinte forma:
 
-  ![image](https://github.com/user-attachments/assets/0d98b6d1-73f6-4d1a-b9a6-b279c6417344)
+![image](https://github.com/user-attachments/assets/5d0edb56-d3df-4e91-a753-b5427f0c5afc)
+
 
 
 🎨 Estilização e Responsividade
