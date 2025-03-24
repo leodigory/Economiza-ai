@@ -7,10 +7,23 @@
 
 ![image](https://github.com/user-attachments/assets/01b4f1d6-c1c8-4774-9371-3cab01353949)
 
+📌 Visão Geral
+Este projeto é um teclado virtual inteligente para aplicações web, com recursos de:
 
-Bem-vindo ao **Teclado Virtual**, um projeto desenvolvido com React e Material-UI que oferece uma experiência de digitação interativa e responsiva. Este teclado virtual foi projetado para ser funcional, esteticamente agradável e altamente personalizável, com transições suaves, temas claro/escuro, som de tecla, e suporte a diferentes layouts (letras e símbolos).
+Sugestões de palavras baseadas em uso frequente e dicionário
+Suporte a temas claro/escuro
+Layouts alternativos (alfabético/numerico)
+Integração com lista de tarefas
+Totalmente responsivo para dispositivos móveis e desktop
 
-## 📋 Visão Geral
+🚀 Recursos Principais
+Sugestões Inteligentes: Combina palavras frequentemente usadas com sugestões de um dicionário
+Teclado Customizável: Layouts alternativos e tema escuro/claro
+To-Do List Integrada: Adicione e gerencie tarefas diretamente pelo teclado
+Otimizado para Mobile: Design responsivo que se adapta a qualquer tamanho de tela
+Acessível: Suporte a navegação por teclado físico
+
+📦 Estrutura do Projeto
 ![image](https://github.com/user-attachments/assets/0aae0319-df5f-4952-84a0-1d263df723b4)
 
 
