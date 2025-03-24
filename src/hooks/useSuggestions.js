@@ -18,7 +18,7 @@ export const useSuggestions = (value, wordList, fuseInstance) => {
   }, []);
 
   const getSuggestions = useCallback(() => {
-    if (!fuseInstance || !wordList.length) {
+    if (!fuseInstance || !wordList || !wordList.length) {
       console.log('FuseInstance ou wordList não está disponível.');
       return [];
     }
@@ -53,15 +53,15 @@ export const useSuggestions = (value, wordList, fuseInstance) => {
       .sort((a, b) => b[1] - a[1])
       .map(([word]) => ({ item: word, score: 0 }));
 
-    const suggestions = [...frequent, ...fuseResults]
+    const newSuggestions = [...frequent, ...fuseResults]
       .sort((a, b) => a.score - b.score)
       .map(result => result.item)
       .filter((item, index, self) => self.indexOf(item) === index)
       .slice(0, 3);
 
-    console.log('Novas sugestões calculadas:', suggestions);
-    suggestionCache.set(cacheKey, suggestions);
-    return suggestions;
+    console.log('Novas sugestões calculadas 3:', newSuggestions);
+    suggestionCache.set(cacheKey, newSuggestions);
+    return newSuggestions;
   }, [value, wordList, fuseInstance, frequentWords, suggestionCache]);
 
   useEffect(() => {

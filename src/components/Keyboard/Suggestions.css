@@ -1,0 +1,45 @@
+/* Suggestions.css */
+.suggestions-container {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(224, 224, 224, 0.9);
+    padding: 8px 10px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* ou absolute, se necessário */
+    z-index: 1001; /* Garante que as sugestões estejam acima do teclado */
+  }
+  
+  .suggestions-container.dark-mode {
+    background: rgba(30, 30, 30, 0.9);
+    border-bottom: 1px solid #444;
+  }
+  
+  .suggestion-button {
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.05);
+    color: #333;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .suggestion-button.dark-mode {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+  }
+  
+  .suggestion-button:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  .suggestion-button.dark-mode:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }

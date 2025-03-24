@@ -23,9 +23,13 @@ const Keyboard = ({
   fuseInstance,
   handleSuggestionClick,
 }) => {
+
   const { isDarkMode, toggleTheme } = useTheme();
   const { capsLock, setCapsLock, activeKey } = useKeyboard(setValue, isVisible, setKeyboardVisible, handleDone);
   const { suggestions } = useSuggestions(value, wordList, fuseInstance);
+  console.log('Sugestões no componente Keyboard 1:', suggestions);
+  console.log('fuseInstance no Keyboard:', fuseInstance);
+  console.log('wordList no Keyboard:', wordList);
   const isMobile = useMobileDetection();
   const keyboardRef = useRef(null);
   const [isNumeric, setIsNumeric] = useState(false);
@@ -34,7 +38,8 @@ const Keyboard = ({
   useClickOutside(keyboardRef, () => setKeyboardVisible(false));
   useCapsLockDetection(setCapsLock);
 
-  console.log('Sugestões no componente Keyboard:', suggestions);
+// No componente Keyboard
+console.log('Sugestões no componente Keyboard 1:', suggestions);
 
   const handleKeyClick = (key) => {
     if (key === 'backspace') {
