@@ -1,50 +1,54 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Fuse from 'fuse.js';
-import Keyboard from './components/Keyboard';
+import './App.css';
+import { useWordList } from './hooks/useWordList';
+import { useSuggestions } from './hooks/useSuggestions';
+import TextArea from './components/TextArea';
+import Message from './components/Message';
+import Keyboard from './components/Keyboard/Keyboard';
+import ToDoList from './components/ToDoList';
 
 function App() {
+  
   const [value, setValue] = useState('');
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
   const [message, setMessage] = useState('');
-  const [wordList, setWordList] = useState([]);
-  const textareaRef = useRef(null);
+  const [todoItems, setTodoItems] = useState(() => {
+    const saved = localStorage.getItem('todoItems');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const { wordList, fuseInstance } = useWordList();
+  const { suggestions, updateFrequentWords } = useSuggestions(value, wordList, fuseInstance);
+  const appRef = useRef(null);
+  const textAreaRef = useRef(null); // Referência para o textarea
   const backspaceTimeout = useRef(null);
   const backspaceInterval = useRef(null);
 
-  // Carrega o dicionário de palavras em português
   useEffect(() => {
-    fetch('/portuguese-words.json')
-      .then(response => response.json())
-      .then(data => setWordList(data))
-      .catch(error => console.error('Erro ao carregar dicionário:', error));
+    const handleClickOutside = (event) => {
+      console.log('Clique detectado em:', event.target);
+      // Verifica se o clique foi fora do app-container
+      if (appRef.current && !appRef.current.contains(event.target)) {
+        console.log('Clique fora do app-container detectado. Escondendo teclado.');
+        setIsKeyboardVisible(false);
+      }
+      // Verifica se o clique foi no textarea
+      else if (textAreaRef.current && textAreaRef.current.contains(event.target)) {
+        console.log('Clique no textarea detectado. Mantendo teclado visível.');
+        setIsKeyboardVisible(true); // Mantém o teclado visível
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Configuração do Fuse.js
-  const fuse = new Fuse(wordList, {
-    shouldSort: true,
-    threshold: 0.2,
-    minMatchCharLength: 1,
-  });
-
-  const getSuggestions = () => {
-    const lastWord = value.split(/\s+/).pop().toLowerCase();
-    if (lastWord && wordList.length > 0) {
-      const results = fuse.search(lastWord);
-      return results.map(result => result.item).slice(0, 3);
-    }
-    return [];
-  };
-
-  const playClickSound = () => {
-    const audio = new Audio('/key-click.mp3');
-    audio.play();
-  };
+  useEffect(() => {
+    localStorage.setItem('todoItems', JSON.stringify(todoItems));
+  }, [todoItems]);
 
   const startBackspace = () => {
     backspaceTimeout.current = setTimeout(() => {
       backspaceInterval.current = setInterval(() => {
-        setValue(prev => prev.slice(0, -1));
-        playClickSound();
+        setValue((prev) => prev.slice(0, -1));
       }, 100);
     }, 300);
   };
@@ -55,94 +59,71 @@ function App() {
   };
 
   const handleDone = () => {
+    if (value.trim()) {
+      setTodoItems((prev) => [...prev, value.trim()]);
+      setValue('');
+    }
     setMessage('Sua mensagem foi confirmada');
-    setKeyboardVisible(false);
-    textareaRef.current.blur();
+    setIsKeyboardVisible(false);
     setTimeout(() => setMessage(''), 2000);
   };
 
   const handleSuggestionClick = (suggestion) => {
-    const words = value.split(/\s+/);
-    words.pop();
-    setValue([...words, suggestion].join(' ') + ' ');
-    playClickSound();
+    const words = value.trim().split(/\s+/);
+    const newValue =
+      words[words.length - 1] === ''
+        ? value + suggestion + ' '
+        : [...words.slice(0, -1), suggestion].join(' ') + ' ';
+    setValue(newValue);
+    updateFrequentWords(newValue);
+  };
+
+  const handleValueChange = (newValue) => {
+    setValue(newValue);
+    updateFrequentWords(newValue);
+  };
+
+  const handleEditItem = (index, newText) => {
+    setTodoItems((prev) => {
+      const updated = [...prev];
+      updated[index] = newText.trim();
+      return updated;
+    });
+  };
+
+  const handleDeleteItem = (index) => {
+    setTodoItems((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handleClearText = () => {
+    setValue('');
   };
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        padding: '40px 20px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '600px',
-          marginBottom: '40px',
-        }}
-      >
-        <h1 style={{
-          color: '#fff',
-          textAlign: 'center',
-          marginBottom: '20px',
-          textShadow: '0 2px 4px rgba(0,0,0,0.2)',
-        }}>
-          Teclado Virtual
-        </h1>
-        <textarea
-          ref={textareaRef}
-          style={{
-            width: '100%',
-            height: '150px',
-            padding: '15px',
-            borderRadius: '12px',
-            border: 'none',
-            fontSize: '1.1rem',
-            resize: 'none',
-            background: 'rgba(255, 255, 255, 0.95)',
-            boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-            color: '#333',
-            transition: 'all 0.3s ease',
-          }}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          onFocus={() => setKeyboardVisible(true)}
-          placeholder="Digite algo..."
-        />
-      </div>
-
-      {message && (
-        <div
-          style={{
-            position: 'fixed',
-            top: '20px',
-            background: 'rgba(0, 255, 0, 0.9)',
-            color: '#fff',
-            padding: '10px 20px',
-            borderRadius: '8px',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
-            transition: 'opacity 0.3s ease',
-            opacity: message ? 1 : 0,
-          }}
-        >
-          {message}
-        </div>
-      )}
-
+    <div ref={appRef} className="app-container">
+      <TextArea
+        ref={textAreaRef} // Passando a referência para o TextArea
+        value={value}
+        setValue={handleValueChange}
+        setKeyboardVisible={setIsKeyboardVisible}
+        onClearText={handleClearText}
+      />
+      <Message message={message} />
+      <ToDoList
+        items={todoItems}
+        onEdit={handleEditItem}
+        onDelete={handleDeleteItem}
+        isKeyboardVisible={isKeyboardVisible}
+      />
       <Keyboard
-        setValue={setValue}
+        setValue={handleValueChange}
         isVisible={isKeyboardVisible}
-        playClickSound={playClickSound}
+        setKeyboardVisible={setIsKeyboardVisible}
         startBackspace={startBackspace}
         stopBackspace={stopBackspace}
         handleDone={handleDone}
         value={value}
-        getSuggestions={getSuggestions}
+        suggestions={suggestions}
         handleSuggestionClick={handleSuggestionClick}
       />
     </div>
