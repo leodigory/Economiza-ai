@@ -98,8 +98,10 @@ O teclado suporta temas claro e escuro. Para modificar as cores:
     }
 
   - **Temas Claro/Escuro**: Alterne entre temas claro e escuro com um botão estilizado (ícones de sol e lua).
-  - 
-  ![image](https://github.com/user-attachments/assets/cedaae25-98da-49a6-808f-76e57c0aa903)  ![image](https://github.com/user-attachments/assets/8a6128de-e8eb-4c10-87c3-e1fdab7f8339)
+
+    
+  ![image](https://github.com/user-attachments/assets/cedaae25-98da-49a6-808f-76e57c0aa903) ![image](https://github.com/user-attachments/assets/8a6128de-e8eb-4c10-87c3-e1fdab7f8339)
+
 
 
 - **Ícones do Material-UI**: Teclas especiais como `Enter`, `Shift`, `Backspace`, e `Space` possuem ícones correspondentes.
