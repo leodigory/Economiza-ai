@@ -24,6 +24,7 @@ Este projeto é um teclado virtual inteligente para aplicações web, com recurs
   Acessível: Suporte a navegação por teclado físico
 
 📦 Estrutura do Projeto
+
 ![image](https://github.com/user-attachments/assets/3f9c3324-1b68-4906-9e4a-2aff2bc4dd78)
 
 O Teclado Virtual é uma aplicação web que simula um teclado físico, permitindo que os usuários digitem texto em um campo de entrada. Ele foi criado como parte de um portfólio de programação, com o objetivo de demonstrar habilidades em React, Material-UI, CSS responsivo, e boas práticas de desenvolvimento.
@@ -39,6 +40,7 @@ Biblioteca	Uso	Documentação
 
   Node.js (v14+)
   npm
+  
 
 ![image](https://github.com/user-attachments/assets/0aae0319-df5f-4952-84a0-1d263df723b4)
 
