@@ -39,6 +39,7 @@ Biblioteca	Uso	Documentação
 🔧 Configuração do Ambiente
 
   Node.js (v14+)
+  
   npm
   
 
