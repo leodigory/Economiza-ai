@@ -6,8 +6,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
   Demo:
-![Tarefas](https://img.shields.io/badge/Tarefas-Organizadas-blue?style=for-the-badge)
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+
 
 🚀 Recursos Principais
   Sugestões Inteligentes: Combina palavras frequentemente usadas com sugestões de um dicionário
