@@ -125,7 +125,75 @@ O teclado se adapta automaticamente a diferentes tamanhos de tela. Pontos de que
   ```
 
 - **Layout Responsivo**: O teclado se adapta a diferentes tamanhos de tela (desktop e celular) com transições suaves e graduais.
-![image](https://github.com/user-attachments/assets/9d2017ad-e3e6-4c32-8087-9f5a672bfde2)
+![image](https://github.com/user-attachments/assets/9d2017ad-e3e6-4c32-8087-9f5a672bfde2) ![image](https://github.com/user-attachments/assets/d904ba20-f8ed-40d2-bc5f-0f6322fa8080)
+
+📝 Sistema de To-Do List
+✨ Visão Geral
+Componente integrado que permite:
+
+  Criar tarefas diretamente do teclado virtual
+  Editar/Excluir itens com confirmação visual
+  Persistência local (dados salvos no localStorage)
+  Design responsivo que se adapta ao tema (claro/escuro)
+
+🧩 Componente: ToDoList.js
+Localização:
+/src/components/ToDoList.js
+
+Props Recebidas:
+
+Prop	Tipo	Descrição
+  items	Array	Lista de tarefas
+  onEdit	Function	Callback para editar um item
+  onDelete	Function	Callback para excluir um item
+
+🔧 Funcionalidades Principais
+1. Adição de Tarefas
+  Acionado pelo botão "Done" no teclado
+
+Validação: Ignora textos vazios
+
+  Animação: Mensagem de confirmação aparece por 2 segundos
+
+```
+// Exemplo de uso no App.js
+const handleDone = () => {
+  if (value.trim()) {
+    setTodoItems([...todoItems, value.trim()]);
+    setValue('');
+  }
+};
+```
+
+💾 Persistência de Dados
+Os itens são salvos automaticamente no localStorage:
+
+```
+// No App.js
+useEffect(() => {
+  localStorage.setItem('todoItems', JSON.stringify(todoItems));
+}, [todoItems]);
+```
+
+📱 Responsividade
+  Layout compacto em mobile
+  Botões redimensionáveis
+  Espaçamento adaptativo
+
+```
+@media (max-width: 600px) {
+  .task-item {
+    padding: 8px 12px;
+  }
+}
+```
+
+Este sistema foi projetado para ser:
+✅ Intuitivo (UX simples)
+✅ Extensível (facilmente modificável)
+✅ Performance (otimizado com React.memo)
+
+Para customizações avançadas, edite o arquivo ToDoList.js.
 
 🧠 Sistema de Sugestões
 O sistema combina:
@@ -141,6 +209,8 @@ O sistema combina:
 
   📸 Screenshots
   ![image](https://github.com/user-attachments/assets/0aae0319-df5f-4952-84a0-1d263df723b4)
+  ![image](https://github.com/user-attachments/assets/a4aee23e-adf1-42cc-a9fd-593a76532b2d)
+
   
 
 📜 Licença
