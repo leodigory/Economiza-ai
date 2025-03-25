@@ -47,23 +47,23 @@ Biblioteca	Uso	Documentação
 
 
 Clone o repositório:
-bash
-   git clone https://github.com/leodigory/teclado-virtual.git
-   cd teclado-virtual
+        bash
+       print(git clone https://github.com/leodigory/teclado-virtual.git
+       cd teclado-virtual)
 
    Instale as dependências: Certifique-se de ter o Node.js instalado.
    
-   npm install
+     npm install
    
-bash
+  bash
 
 Execução:
 
-  npm start
+    npm start
 
 Build para produção:
 
-  npm run build
+    npm run build
 
 🎨 Personalização
 
@@ -71,10 +71,10 @@ Temas
 O teclado suporta temas claro e escuro. Para modificar as cores:
 
     /* No arquivo Key.css */
-  .key {
-    background: var(--key-bg-color);
-    color: var(--key-text-color);
-  }
+    .key {
+      background: var(--key-bg-color);
+      color: var(--key-text-color);
+    }
 
   - **Temas Claro/Escuro**: Alterne entre temas claro e escuro com um botão estilizado (ícones de sol e lua).
   - 
