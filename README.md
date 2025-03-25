@@ -7,15 +7,6 @@
 
   Demo:
 
-📌 Visão Geral
-Este projeto é um teclado virtual inteligente para aplicações web, com recursos de:
-
-  Sugestões de palavras baseadas em uso frequente e dicionário
-  Suporte a temas claro/escuro
-  Layouts alternativos (alfabético/numerico)
-  Integração com lista de tarefas
-  Totalmente responsivo para dispositivos móveis e desktop
-
 🚀 Recursos Principais
   Sugestões Inteligentes: Combina palavras frequentemente usadas com sugestões de um dicionário
   Teclado Customizável: Layouts alternativos e tema escuro/claro
@@ -32,6 +23,7 @@ O Teclado Virtual é uma aplicação web que simula um teclado físico, permitin
 🛠️ Bibliotecas Utilizadas
 
 Biblioteca	Uso	Documentação
+
   React	Framework principal	reactjs.org
   Fuse.js	Busca difusa para sugestões	fusejs.io
   Material Icons	Ícones do teclado	material.io
@@ -47,15 +39,38 @@ Biblioteca	Uso	Documentação
 
 
 Clone o repositório:
-        bash
-       print(git clone https://github.com/leodigory/teclado-virtual.git
-       cd teclado-virtual)
+     
+      ```git clone https://github.com/leodigory/teclado-virtual.git
+       cd teclado-virtual```
 
-   Instale as dependências: Certifique-se de ter o Node.js instalado.
+       🔗 Documentação: https://reactjs.org/
+
+Instale as dependências: Certifique-se de ter o Node.js instalado.
+   
    
      npm install
    
-  bash
+
+2. Fuse.js (para busca difusa de sugestões)
+   
+🔗 Documentação: https://fusejs.io/
+
+📦 Instalação:
+
+```
+npm install fuse.js
+```
+
+3. Material Icons (ícones do teclado)
+🔗 Documentação: https://mui.com/material-ui/material-icons/
+
+📦 Instalação (via CDN - já configurada no CSS do projeto):
+
+html
+```
+<!-- No seu public/index.html -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
 
 Execução:
 
@@ -88,22 +103,24 @@ O teclado suporta temas claro e escuro. Para modificar as cores:
 
   Layouts
 Modifique os layouts em useKeyboardLayout.js:
-
+```
   const alphaLayoutBase = [
   ['q', 'w', 'e', 'r', 't', 'y', ...],
   // ... outros layouts
   ];
-
+```
  - **Modo de Símbolos**: Alterne entre letras e números/símbolos com o botão `?123`.
 
   📱 Responsividade
 O teclado se adapta automaticamente a diferentes tamanhos de tela. Pontos de quebra podem ser ajustados em Key.css:
+   ```
     @media (max-width: 600px) {
       .key {
         height: 40px;
         font-size: 0.9rem;
       }
     }
+  ```
 
 - **Layout Responsivo**: O teclado se adapta a diferentes tamanhos de tela (desktop e celular) com transições suaves e graduais.
 ![image](https://github.com/user-attachments/assets/9d2017ad-e3e6-4c32-8087-9f5a672bfde2)
@@ -115,9 +132,10 @@ O sistema combina:
   Sugestões do dicionário (arquivos .txt em /public)
   Para adicionar mais palavras ao dicionário, edite os arquivos:
   
+  ```
   public/br-utf8.txt
   public/br-sem-acentos.txt
-
+  ```
 
   📸 Screenshots
 
@@ -129,7 +147,8 @@ Este projeto está licenciado sob a MIT License. Sinta-se à vontade para usá-l
 
 📧 Contato
 Se você tiver dúvidas ou precisar de ajuda, entre em contato comigo:
-
+```
 GitHub: leodigory
 E-mail: leodigory@gmail.com
+```
 Feito com 💻 e ☕ por Leonardo Araujo.
