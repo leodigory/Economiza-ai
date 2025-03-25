@@ -6,40 +6,9 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
   Demo:
-// Em ToDoList.js - Estilo modificado
-<div style={{
-  flex: 1,
-  color: '#e0e0e0',
-  fontSize: '0.95rem',
-  fontFamily: "'Poppins', sans-serif",
-  wordBreak: 'break-word',
-  overflow: 'hidden',
-  maxHeight: '100px',
-  transition: 'max-height 0.3s ease',
-  '&:hover': {
-    maxHeight: 'none' // Expande ao passar o mouse
-  }
-}}>
-  {item}
-</div>
+![Tarefas](https://img.shields.io/badge/Tarefas-Organizadas-blue?style=for-the-badge)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 
-// Em App.js
-const KeyboardMemoized = React.memo(Keyboard);
-
-// Na renderização:
-<KeyboardMemoized 
-  setValue={handleValueChange}
-  isVisible={isKeyboardVisible}
-  /* outras props */
-/>
-
-// Em Keyboard.js - Adicione esta verificação
-const shouldReRender = (prevProps, nextProps) => {
-  return prevProps.isVisible === nextProps.isVisible && 
-         prevProps.value === nextProps.value;
-};
-
-export default React.memo(Keyboard, shouldReRender);
 🚀 Recursos Principais
   Sugestões Inteligentes: Combina palavras frequentemente usadas com sugestões de um dicionário
   Teclado Customizável: Layouts alternativos e tema escuro/claro
