@@ -35,15 +35,16 @@ Biblioteca	Uso	Documentação
   npm
   
 
-![image](https://github.com/user-attachments/assets/0aae0319-df5f-4952-84a0-1d263df723b4)
+![image](https://github.com/user-attachments/assets/01b4f1d6-c1c8-4774-9371-3cab01353949)
 
 
 Clone o repositório:
      
       ```git clone https://github.com/leodigory/teclado-virtual.git
-       cd teclado-virtual```
+       cd teclado-virtual
+       ```
 
-       🔗 Documentação: https://reactjs.org/
+🔗 Documentação: https://reactjs.org/
 
 Instale as dependências: Certifique-se de ter o Node.js instalado.
    
@@ -67,8 +68,9 @@ npm install fuse.js
 📦 Instalação (via CDN - já configurada no CSS do projeto):
 
 html
+No seu public/index.html -->
+        
 ```
-<!-- No seu public/index.html -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 ```
 
@@ -138,8 +140,8 @@ O sistema combina:
   ```
 
   📸 Screenshots
-
-  ![image](https://github.com/user-attachments/assets/01b4f1d6-c1c8-4774-9371-3cab01353949)
+  ![image](https://github.com/user-attachments/assets/0aae0319-df5f-4952-84a0-1d263df723b4)
+  
 
 📜 Licença
 Este projeto está licenciado sob a MIT License. Sinta-se à vontade para usá-lo, modificá-lo e distribuí-lo conforme necessário.
