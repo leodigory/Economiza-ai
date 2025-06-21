@@ -1,14 +1,17 @@
 import React, { useState, useCallback } from 'react';
 import './ToDoList.css';
 
-const ToDoList = ({ items, onEdit, onDelete, isKeyboardVisible }) => {
+const ToDoList = ({ items, onEdit, onDelete, isKeyboardVisible, onEditStart }) => {
   const [editIndex, setEditIndex] = useState(null);
   const [editText, setEditText] = useState('');
 
   const handleEditStart = useCallback((index, text) => {
+    if (onEditStart) {
+      onEditStart(text);
+    }
     setEditIndex(index);
     setEditText(text);
-  }, []);
+  }, [onEditStart]);
 
   const handleEditSave = useCallback((index) => {
     if (editText.trim()) {

@@ -1,0 +1,142 @@
+.message-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.message-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.95), rgba(139, 195, 74, 0.95));
+  color: white;
+  padding: 16px 24px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(76, 175, 80, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+  font-size: 16px;
+  max-width: 400px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.message-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.message-text {
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Animações */
+.message-visible {
+  animation: messageSlideIn 0.3s ease-out;
+}
+
+.message-hiding {
+  animation: messageSlideOut 0.3s ease-in;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes messageSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .message-container {
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    transform: none;
+  }
+  
+  .message-content {
+    padding: 12px 16px;
+    font-size: 14px;
+    max-width: none;
+  }
+  
+  .message-icon {
+    font-size: 18px;
+  }
+  
+  @keyframes messageSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes messageSlideOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .message-container {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+  
+  .message-content {
+    padding: 10px 14px;
+    font-size: 13px;
+    gap: 8px;
+  }
+  
+  .message-icon {
+    font-size: 16px;
+  }
+}
+
+/* Melhorias de performance */
+.message-container {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Tema escuro */
+@media (prefers-color-scheme: dark) {
+  .message-content {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(139, 195, 74, 0.9));
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+} 

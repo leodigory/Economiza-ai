@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import './App.css';
 import { useWordList } from './hooks/useWordList';
 import { useSuggestions } from './hooks/useSuggestions';
@@ -41,20 +41,20 @@ function App() {
     localStorage.setItem('todoItems', JSON.stringify(todoItems));
   }, [todoItems]);
 
-  const startBackspace = () => {
+  const startBackspace = useCallback(() => {
     backspaceTimeout.current = setTimeout(() => {
       backspaceInterval.current = setInterval(() => {
         setValue((prev) => prev.slice(0, -1));
       }, 100);
     }, 300);
-  };
+  }, []);
 
-  const stopBackspace = () => {
+  const stopBackspace = useCallback(() => {
     clearTimeout(backspaceTimeout.current);
     clearInterval(backspaceInterval.current);
-  };
+  }, []);
 
-  const handleDone = () => {
+  const handleDone = useCallback(() => {
     if (value.trim()) {
       setTodoItems((prev) => [...prev, value.trim()]);
       setValue('');
@@ -62,9 +62,9 @@ function App() {
       setTimeout(() => setMessage(''), 2000);
     }
     setIsKeyboardVisible(false);
-  };
+  }, [value]);
 
-  const handleSuggestionClick = (suggestion) => {
+  const handleSuggestionClick = useCallback((suggestion) => {
     const words = value.trim().split(/\s+/);
     const newValue =
       words[words.length - 1] === ''
@@ -72,28 +72,39 @@ function App() {
         : [...words.slice(0, -1), suggestion].join(' ') + ' ';
     setValue(newValue);
     updateFrequentWords(newValue);
-  };
+  }, [value, updateFrequentWords]);
 
-  const handleValueChange = (newValue) => {
+  const handleValueChange = useCallback((newValue) => {
     setValue(newValue);
     updateFrequentWords(newValue);
-  };
+  }, [updateFrequentWords]);
 
-  const handleEditItem = (index, newText) => {
+  const handleEditItem = useCallback((index, newText) => {
     setTodoItems((prev) => {
       const updated = [...prev];
       updated[index] = newText.trim();
       return updated;
     });
-  };
+  }, []);
 
-  const handleDeleteItem = (index) => {
+  const handleDeleteItem = useCallback((index) => {
     setTodoItems((prev) => prev.filter((_, i) => i !== index));
-  };
+  }, []);
 
-  const handleClearText = () => {
+  const handleClearText = useCallback(() => {
     setValue('');
-  };
+  }, []);
+
+  const handleEditStart = useCallback((text) => {
+    setValue(text);
+    setIsKeyboardVisible(true);
+    // Foca no textarea
+    if (textAreaRef.current) {
+      textAreaRef.current.focus();
+      // Seleciona todo o texto para facilitar a edição
+      textAreaRef.current.setSelectionRange(0, text.length);
+    }
+  }, []);
 
   return (
     <div ref={appRef} className="app-container">
@@ -110,6 +121,7 @@ function App() {
         onEdit={handleEditItem}
         onDelete={handleDeleteItem}
         isKeyboardVisible={isKeyboardVisible}
+        onEditStart={handleEditStart}
       />
       <Keyboard
         setValue={handleValueChange}

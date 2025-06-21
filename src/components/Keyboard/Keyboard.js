@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import Suggestions from './Suggestions';
 import KeyboardRow from './KeyboardRow';
 import { useKeyboard } from '../../hooks/useKeyboard';
@@ -31,7 +31,7 @@ const Keyboard = ({
   useClickOutside(keyboardRef, () => setKeyboardVisible(false));
   useCapsLockDetection(setCapsLock);
 
-  const handleKeyClick = (key) => {
+  const handleKeyClick = useCallback((key) => {
     if (key === 'backspace') {
       setValue((prev) => prev.slice(0, -1));
     } else if (key === 'caps') {
@@ -49,46 +49,45 @@ const Keyboard = ({
     } else {
       setValue((prev) => prev + (capsLock ? key.toUpperCase() : key.toLowerCase()));
     }
-  };
+  }, [setValue, setCapsLock, capsLock, toggleTheme, handleDone]);
+
+  const handleSuggestionClick = useCallback((suggestion) => {
+    handleSuggestionClick(suggestion);
+  }, [handleSuggestionClick]);
 
   return (
     <div
       ref={keyboardRef}
-      className="keyboard"
+      className={`keyboard-container ${isVisible ? 'keyboard-visible' : 'keyboard-hidden'}`}
       style={{
         position: 'fixed',
         left: 0,
-        bottom: isVisible ? 0 : '-100%',
+        bottom: 0,
         width: '100%',
-        padding: isMobile ? '5px 0' : '10px 0',
-        background: isDarkMode ? '#1a1a1a' : '#f1f3f4',
-        boxShadow: '0 -2px 15px rgba(0, 0, 0, 0.2)',
-        userSelect: 'none',
-        transition: 'bottom 0.4s, background 0.4s',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
         zIndex: 1000,
+        userSelect: 'none',
       }}
     >
-      <Suggestions
-        suggestions={suggestions}
-        handleSuggestionClick={handleSuggestionClick}
-        isDarkMode={isDarkMode}
-      />
-      {keyLayout.map((row, rowIndex) => (
-        <KeyboardRow
-          key={rowIndex}
-          row={row}
-          handleKeyClick={handleKeyClick}
-          startBackspace={startBackspace}
-          stopBackspace={stopBackspace}
-          capsLock={capsLock}
-          activeKey={activeKey}
-          isDarkMode={isDarkMode}
-          iconMap={iconMap}
+      <div className="keyboard">
+        <Suggestions
+          suggestions={suggestions}
+          onSuggestionClick={handleSuggestionClick}
+          isVisible={isVisible && suggestions && suggestions.length > 0}
         />
-      ))}
+        {keyLayout.map((row, rowIndex) => (
+          <KeyboardRow
+            key={rowIndex}
+            row={row}
+            handleKeyClick={handleKeyClick}
+            startBackspace={startBackspace}
+            stopBackspace={stopBackspace}
+            capsLock={capsLock}
+            activeKey={activeKey}
+            isDarkMode={isDarkMode}
+            iconMap={iconMap}
+          />
+        ))}
+      </div>
     </div>
   );
 };
