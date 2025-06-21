@@ -1,232 +1,258 @@
-# Teclado Virtual 
+# ⌨️ Teclado Virtual
 
-![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-![Material-UI](https://img.shields.io/badge/Material--UI-5.15.0-0081CB?style=for-the-badge&logo=mui&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+[![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![Material-UI](https://img.shields.io/badge/Material--UI-5.15.10-0081CB?style=for-the-badge&logo=mui&logoColor=white)](https://mui.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Netlify](https://img.shields.io/badge/Netlify-Deployed-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://tecladovirtualtodolist.netlify.app/)
 
-![recording (1)-VEED](https://github.com/user-attachments/assets/30a14ff0-f784-423b-be74-a8a70c5f7976)
+> Um teclado virtual moderno e acessível com sugestões inteligentes e sistema integrado de to-do list
 
+## 🌟 Demo
 
-  Demo: https://tecladovirtualtodolist.netlify.app/
+**[Acesse o Demo Online](https://tecladovirtualtodolist.netlify.app/)**
 
+## ✨ Características Principais
 
-🚀 Recursos Principais
-  Sugestões Inteligentes: Combina palavras frequentemente usadas com sugestões de um dicionário
-  Teclado Customizável: Layouts alternativos e tema escuro/claro
-  To-Do List Integrada: Adicione e gerencie tarefas diretamente pelo teclado
-  Otimizado para Mobile: Design responsivo que se adapta a qualquer tamanho de tela
-  Acessível: Suporte a navegação por teclado físico
+### 🎯 **Funcionalidades Core**
+- **Teclado Virtual Responsivo** - Adapta-se perfeitamente a qualquer dispositivo
+- **Sugestões Inteligentes** - Combina palavras frequentes com dicionário português
+- **To-Do List Integrada** - Gerencie tarefas diretamente pelo teclado
+- **Temas Dinâmicos** - Alternância suave entre modo claro e escuro
+- **Acessibilidade Total** - Suporte completo a navegação por teclado e leitores de tela
 
-📦 Estrutura do Projeto
+### 🚀 **Recursos Avançados**
+- **Layouts Múltiplos** - Alfabético, numérico e símbolos
+- **Persistência Local** - Dados salvos automaticamente no localStorage
+- **Sons de Feedback** - Experiência auditiva imersiva
+- **Atalhos de Teclado** - Ctrl+A, Ctrl+C, Ctrl+V, etc.
+- **Detecção de Caps Lock** - Sincronização com teclado físico
+- **Otimização Mobile** - Interface otimizada para touch
 
-![image](https://github.com/user-attachments/assets/3f9c3324-1b68-4906-9e4a-2aff2bc4dd78)
+### 🎨 **Design & UX**
+- **Interface Moderna** - Design glassmorphism com gradientes
+- **Animações Suaves** - Transições fluidas e responsivas
+- **Responsividade Total** - Funciona perfeitamente em desktop, tablet e mobile
+- **Tema Adaptativo** - Respeita preferências do sistema
 
-O Teclado Virtual é uma aplicação web que simula um teclado físico, permitindo que os usuários digitem texto em um campo de entrada. Ele foi criado como parte de um portfólio de programação, com o objetivo de demonstrar habilidades em React, Material-UI, CSS responsivo, e boas práticas de desenvolvimento.
+## 🛠️ Tecnologias Utilizadas
 
-🛠️ Bibliotecas Utilizadas
+| Tecnologia | Versão | Propósito |
+|------------|--------|-----------|
+| **React** | 18.2.0 | Framework principal |
+| **Material-UI** | 5.15.10 | Componentes e design system |
+| **Fuse.js** | 7.0.0 | Busca difusa para sugestões |
+| **CSS3** | - | Estilos e animações |
+| **LocalStorage** | - | Persistência de dados |
 
-Biblioteca	Uso	Documentação
+## 📦 Instalação e Configuração
 
-  React	Framework principal	reactjs.org
-  Fuse.js	Busca difusa para sugestões	fusejs.io
-  Material Icons	Ícones do teclado	material.io
-  
-🔧 Configuração do Ambiente
+### Pré-requisitos
+- Node.js 16.0.0 ou superior
+- npm 8.0.0 ou superior
 
-  Node.js (v14+)
-  
-  npm
-  
+### Passos de Instalação
 
-![image](https://github.com/user-attachments/assets/01b4f1d6-c1c8-4774-9371-3cab01353949)
-
-
-Clone o repositório:
-     
-      ```git clone https://github.com/leodigory/teclado-virtual.git
-       cd teclado-virtual
-       ```
-
-🔗 Documentação: https://reactjs.org/
-
-Instale as dependências: Certifique-se de ter o Node.js instalado.
-   
-   
-     npm install
-   
-
-2. Fuse.js (para busca difusa de sugestões)
-   
-🔗 Documentação: https://fusejs.io/
-
-📦 Instalação:
-
-```
-npm install fuse.js
+1. **Clone o repositório**
+```bash
+git clone https://github.com/leodigory/virtual_teclado.git
+cd virtual_teclado
 ```
 
-3. Material Icons (ícones do teclado)
-🔗 Documentação: https://mui.com/material-ui/material-icons/
-
-📦 Instalação (via CDN - já configurada no CSS do projeto):
-
-html
-No seu public/index.html -->
-        
-```
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+2. **Instale as dependências**
+```bash
+npm install
 ```
 
-Execução:
-
-    npm start
-
-Build para produção:
-
-    npm run build
-
-🎨 Personalização
-
-Temas
-O teclado suporta temas claro e escuro. Para modificar as cores:
-
-    /* No arquivo Key.css */
-    .key {
-      background: var(--key-bg-color);
-      color: var(--key-text-color);
-    }
-
-  - **Temas Claro/Escuro**: Alterne entre temas claro e escuro com um botão estilizado (ícones de sol e lua).
-
-    
-  ![image](https://github.com/user-attachments/assets/cedaae25-98da-49a6-808f-76e57c0aa903) ![image](https://github.com/user-attachments/assets/8a6128de-e8eb-4c10-87c3-e1fdab7f8339)
-
-
-
-- **Ícones do Material-UI**: Teclas especiais como `Enter`, `Shift`, `Backspace`, e `Space` possuem ícones correspondentes.
-- **Transparência**: O teclado e os botões possuem transparência para um visual moderno.
-- **Transições Suaves**: Todas as mudanças de layout e tema são animadas com transições CSS suaves.
-
-
-  Layouts
-Modifique os layouts em useKeyboardLayout.js:
+3. **Inicie o servidor de desenvolvimento**
+```bash
+npm start
 ```
-  const alphaLayoutBase = [
+
+4. **Acesse no navegador**
+```
+http://localhost:3000
+```
+
+### Scripts Disponíveis
+
+```bash
+npm start          # Inicia servidor de desenvolvimento
+npm run build      # Gera build de produção
+npm test           # Executa testes
+npm run lint       # Verifica código com ESLint
+npm run lint:fix   # Corrige problemas de linting automaticamente
+npm run format     # Formata código com Prettier
+npm run analyze    # Analisa bundle de produção
+```
+
+## 🎮 Como Usar
+
+### **Digitação Básica**
+1. Clique na área de texto para abrir o teclado virtual
+2. Digite normalmente usando o teclado virtual ou físico
+3. Use o botão "Limpar" para apagar todo o texto
+
+### **Sugestões Inteligentes**
+- Digite 2+ caracteres para ver sugestões
+- Clique em uma sugestão para completar a palavra
+- Sugestões combinam palavras frequentes + dicionário
+
+### **To-Do List**
+1. Digite sua tarefa na área de texto
+2. Clique no botão "Done" no teclado virtual
+3. Edite ou exclua tarefas usando os botões correspondentes
+
+### **Atalhos de Teclado**
+- `Ctrl+A` - Selecionar todo o texto
+- `Ctrl+C` - Copiar texto selecionado
+- `Ctrl+V` - Colar texto
+- `Enter` - Salvar edição de tarefa
+- `Esc` - Cancelar edição de tarefa
+
+## 🏗️ Arquitetura do Projeto
+
+```
+src/
+├── components/           # Componentes React
+│   ├── Keyboard/        # Componentes do teclado virtual
+│   ├── TextArea.js      # Área de texto principal
+│   ├── ToDoList.js      # Sistema de tarefas
+│   └── Message.js       # Componente de mensagens
+├── hooks/               # Hooks customizados
+│   ├── useKeyboard.js   # Lógica do teclado
+│   ├── useSuggestions.js # Sistema de sugestões
+│   ├── useWordList.js   # Carregamento de dicionário
+│   └── useTheme.js      # Gerenciamento de temas
+├── css/                 # Estilos globais
+└── App.jsx             # Componente principal
+```
+
+## 🎨 Personalização
+
+### **Temas**
+O teclado suporta temas claro e escuro. Para modificar:
+
+```css
+/* Em Key.css */
+.key {
+  background: var(--key-bg-color);
+  color: var(--key-text-color);
+}
+```
+
+### **Layouts**
+Modifique os layouts em `useKeyboardLayout.js`:
+
+```javascript
+const alphaLayoutBase = [
   ['q', 'w', 'e', 'r', 't', 'y', ...],
   // ... outros layouts
-  ];
-```
- - **Modo de Símbolos**: Alterne entre letras e números/símbolos com o botão `?123`.
-
-  📱 Responsividade
-O teclado se adapta automaticamente a diferentes tamanhos de tela. Pontos de quebra podem ser ajustados em Key.css:
-   ```
-    @media (max-width: 600px) {
-      .key {
-        height: 40px;
-        font-size: 0.9rem;
-      }
-    }
-  ```
-
-- **Layout Responsivo**: O teclado se adapta a diferentes tamanhos de tela (desktop e celular) com transições suaves e graduais.
-![image](https://github.com/user-attachments/assets/9d2017ad-e3e6-4c32-8087-9f5a672bfde2) ![image](https://github.com/user-attachments/assets/d904ba20-f8ed-40d2-bc5f-0f6322fa8080)
-
-📝 Sistema de To-Do List
-✨ Visão Geral
-Componente integrado que permite:
-
-  Criar tarefas diretamente do teclado virtual
-  Editar/Excluir itens com confirmação visual
-  Persistência local (dados salvos no localStorage)
-  Design responsivo que se adapta ao tema (claro/escuro)
-
-🧩 Componente: ToDoList.js
-Localização:
-/src/components/ToDoList.js
-
-Props Recebidas:
-
-Prop	Tipo	Descrição
-  items	Array	Lista de tarefas
-  onEdit	Function	Callback para editar um item
-  onDelete	Function	Callback para excluir um item
-
-🔧 Funcionalidades Principais
-1. Adição de Tarefas
-  Acionado pelo botão "Done" no teclado
-
-Validação: Ignora textos vazios
-
-  Animação: Mensagem de confirmação aparece por 2 segundos
-
-```
-// Exemplo de uso no App.js
-const handleDone = () => {
-  if (value.trim()) {
-    setTodoItems([...todoItems, value.trim()]);
-    setValue('');
-  }
-};
+];
 ```
 
-💾 Persistência de Dados
-Os itens são salvos automaticamente no localStorage:
+### **Dicionário**
+Adicione palavras aos arquivos:
+- `public/br-utf8.txt` - Palavras com acentos
+- `public/br-sem-acentos.txt` - Palavras sem acentos
 
-```
-// No App.js
-useEffect(() => {
-  localStorage.setItem('todoItems', JSON.stringify(todoItems));
-}, [todoItems]);
-```
+## 📱 Responsividade
 
-📱 Responsividade
-  Layout compacto em mobile
-  Botões redimensionáveis
-  Espaçamento adaptativo
+O teclado se adapta automaticamente:
 
-```
+```css
 @media (max-width: 600px) {
-  .task-item {
-    padding: 8px 12px;
+  .key {
+    height: 40px;
+    font-size: 0.9rem;
   }
 }
 ```
 
-Este sistema foi projetado para ser:
-✅ Intuitivo (UX simples)
-✅ Extensível (facilmente modificável)
-✅ Performance (otimizado com React.memo)
+## 🔧 Configurações Avançadas
 
-Para customizações avançadas, edite o arquivo ToDoList.js.
+### **Performance**
+- Lazy loading de componentes
+- Memoização de sugestões
+- Debounce em inputs
+- Otimização de re-renders
 
-🧠 Sistema de Sugestões
-O sistema combina:
+### **Acessibilidade**
+- Navegação por teclado
+- Suporte a leitores de tela
+- Contraste adequado
+- Foco visível
 
-  Palavras frequentemente usadas (rastreadas automaticamente)
-  Sugestões do dicionário (arquivos .txt em /public)
-  Para adicionar mais palavras ao dicionário, edite os arquivos:
-  
-  ```
-  public/br-utf8.txt
-  public/br-sem-acentos.txt
-  ```
+### **SEO**
+- Meta tags otimizadas
+- Estrutura semântica
+- Performance Core Web Vitals
 
-  📸 Screenshots
-  ![image](https://github.com/user-attachments/assets/0aae0319-df5f-4952-84a0-1d263df723b4)
-  ![image](https://github.com/user-attachments/assets/a4aee23e-adf1-42cc-a9fd-593a76532b2d)
+## 🐛 Solução de Problemas
 
-  
+### **Problemas Comuns**
 
-📜 Licença
-Este projeto está licenciado sob a MIT License. Sinta-se à vontade para usá-lo, modificá-lo e distribuí-lo conforme necessário.
+1. **Teclado não aparece**
+   - Verifique se clicou na área de texto
+   - Recarregue a página
 
+2. **Sugestões não funcionam**
+   - Verifique conexão com internet
+   - Aguarde carregamento do dicionário
 
-📧 Contato
-Se você tiver dúvidas ou precisar de ajuda, entre em contato comigo:
+3. **Tarefas não salvam**
+   - Verifique se localStorage está habilitado
+   - Limpe cache do navegador
+
+### **Logs de Debug**
+```bash
+npm run lint        # Verifica problemas de código
+npm run build       # Testa build de produção
 ```
-GitHub: leodigory
-E-mail: leodigory@gmail.com
-```
-Feito com 💻 e ☕ por Leonardo Araujo.
+
+## 🤝 Contribuindo
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+### **Diretrizes de Contribuição**
+- Siga o padrão de código existente
+- Adicione testes para novas funcionalidades
+- Mantenha a acessibilidade
+- Documente mudanças importantes
+
+## 📄 Licença
+
+Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+## 👨‍💻 Autor
+
+**Leonardo Araujo**
+- GitHub: [@leodigory](https://github.com/leodigory)
+- Email: leodigory@gmail.com
+
+## 🙏 Agradecimentos
+
+- [React](https://reactjs.org/) - Framework incrível
+- [Material-UI](https://mui.com/) - Componentes de qualidade
+- [Fuse.js](https://fusejs.io/) - Busca difusa poderosa
+- Comunidade open source
+
+## 📈 Roadmap
+
+- [ ] Suporte a múltiplos idiomas
+- [ ] Integração com APIs de tradução
+- [ ] Modo offline completo
+- [ ] PWA (Progressive Web App)
+- [ ] Sincronização em nuvem
+- [ ] Temas customizáveis
+- [ ] Atalhos personalizáveis
+
+---
+
+⭐ **Se este projeto te ajudou, considere dar uma estrela!**
+
+Feito com ❤️ e ☕ por Leonardo Araujo

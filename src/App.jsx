@@ -8,7 +8,6 @@ import Keyboard from './components/Keyboard/Keyboard';
 import ToDoList from './components/ToDoList';
 
 function App() {
-  
   const [value, setValue] = useState('');
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
   const [message, setMessage] = useState('');
@@ -16,27 +15,24 @@ function App() {
     const saved = localStorage.getItem('todoItems');
     return saved ? JSON.parse(saved) : [];
   });
+  
   const { wordList, fuseInstance } = useWordList();
   const { suggestions, updateFrequentWords } = useSuggestions(value, wordList, fuseInstance);
+  
   const appRef = useRef(null);
-  const textAreaRef = useRef(null); // Referência para o textarea
+  const textAreaRef = useRef(null);
   const backspaceTimeout = useRef(null);
   const backspaceInterval = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      console.log('Clique detectado em:', event.target);
-      // Verifica se o clique foi fora do app-container
       if (appRef.current && !appRef.current.contains(event.target)) {
-        console.log('Clique fora do app-container detectado. Escondendo teclado.');
         setIsKeyboardVisible(false);
-      }
-      // Verifica se o clique foi no textarea
-      else if (textAreaRef.current && textAreaRef.current.contains(event.target)) {
-        console.log('Clique no textarea detectado. Mantendo teclado visível.');
-        setIsKeyboardVisible(true); // Mantém o teclado visível
+      } else if (textAreaRef.current && textAreaRef.current.contains(event.target)) {
+        setIsKeyboardVisible(true);
       }
     };
+    
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
@@ -62,10 +58,10 @@ function App() {
     if (value.trim()) {
       setTodoItems((prev) => [...prev, value.trim()]);
       setValue('');
+      setMessage('Tarefa adicionada com sucesso!');
+      setTimeout(() => setMessage(''), 2000);
     }
-    setMessage('Sua mensagem foi confirmada');
     setIsKeyboardVisible(false);
-    setTimeout(() => setMessage(''), 2000);
   };
 
   const handleSuggestionClick = (suggestion) => {
@@ -102,7 +98,7 @@ function App() {
   return (
     <div ref={appRef} className="app-container">
       <TextArea
-        ref={textAreaRef} // Passando a referência para o TextArea
+        ref={textAreaRef}
         value={value}
         setValue={handleValueChange}
         setKeyboardVisible={setIsKeyboardVisible}

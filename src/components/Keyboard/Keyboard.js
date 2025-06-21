@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import Suggestions from './Suggestions';
 import KeyboardRow from './KeyboardRow';
 import { useKeyboard } from '../../hooks/useKeyboard';
-import { useSuggestions } from '../../hooks/useSuggestions';
 import useKeyboardLayout from '../../hooks/useKeyboardLayout';
 import useTheme from '../../hooks/useTheme';
 import useClickOutside from '../../hooks/useClickOutside';
@@ -19,17 +18,11 @@ const Keyboard = ({
   stopBackspace,
   handleDone,
   value,
-  wordList,
-  fuseInstance,
+  suggestions,
   handleSuggestionClick,
 }) => {
-
   const { isDarkMode, toggleTheme } = useTheme();
   const { capsLock, setCapsLock, activeKey } = useKeyboard(setValue, isVisible, setKeyboardVisible, handleDone);
-  const { suggestions } = useSuggestions(value, wordList, fuseInstance);
-  console.log('Sugestões no componente Keyboard 1:', suggestions);
-  console.log('fuseInstance no Keyboard:', fuseInstance);
-  console.log('wordList no Keyboard:', wordList);
   const isMobile = useMobileDetection();
   const keyboardRef = useRef(null);
   const [isNumeric, setIsNumeric] = useState(false);
@@ -37,9 +30,6 @@ const Keyboard = ({
 
   useClickOutside(keyboardRef, () => setKeyboardVisible(false));
   useCapsLockDetection(setCapsLock);
-
-// No componente Keyboard
-console.log('Sugestões no componente Keyboard 1:', suggestions);
 
   const handleKeyClick = (key) => {
     if (key === 'backspace') {

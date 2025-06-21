@@ -19,7 +19,6 @@ export const useSuggestions = (value, wordList, fuseInstance) => {
 
   const getSuggestions = useCallback(() => {
     if (!fuseInstance || !wordList || !wordList.length) {
-      console.log('FuseInstance ou wordList não está disponível.');
       return [];
     }
 
@@ -28,18 +27,15 @@ export const useSuggestions = (value, wordList, fuseInstance) => {
 
     // Ignorar palavras com mais de 15 caracteres
     if (lastWord.length > 15) {
-      console.log('Palavra muito longa, ignorando sugestões.');
       return [];
     }
 
     if (lastWord.length < 2) {
-      console.log('Palavra muito curta, ignorando sugestões.');
       return [];
     }
 
     const cacheKey = lastWord;
     if (suggestionCache.has(cacheKey)) {
-      console.log('Usando sugestões do cache:', suggestionCache.get(cacheKey));
       return suggestionCache.get(cacheKey);
     }
 
@@ -59,7 +55,6 @@ export const useSuggestions = (value, wordList, fuseInstance) => {
       .filter((item, index, self) => self.indexOf(item) === index)
       .slice(0, 3);
 
-    console.log('Novas sugestões calculadas 3:', newSuggestions);
     suggestionCache.set(cacheKey, newSuggestions);
     return newSuggestions;
   }, [value, wordList, fuseInstance, frequentWords, suggestionCache]);
@@ -67,7 +62,6 @@ export const useSuggestions = (value, wordList, fuseInstance) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       const newSuggestions = getSuggestions();
-      console.log('Sugestões atualizadas:', newSuggestions);
       setSuggestions(newSuggestions);
     }, 150);
     return () => clearTimeout(timeout);
