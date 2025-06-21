@@ -51,7 +51,7 @@ const Keyboard = ({
     }
   }, [setValue, setCapsLock, capsLock, toggleTheme, handleDone]);
 
-  const handleSuggestionClick = useCallback((suggestion) => {
+  const onSuggestionClick = useCallback((suggestion) => {
     handleSuggestionClick(suggestion);
   }, [handleSuggestionClick]);
 
@@ -71,7 +71,7 @@ const Keyboard = ({
       <div className="keyboard">
         <Suggestions
           suggestions={suggestions}
-          onSuggestionClick={handleSuggestionClick}
+          onSuggestionClick={onSuggestionClick}
           isVisible={isVisible && suggestions && suggestions.length > 0}
         />
         {keyLayout.map((row, rowIndex) => (
