@@ -21,7 +21,7 @@ import {
   query,
   where,
 } from 'firebase/firestore';
-import { db } from './config/firebase';
+import { db, isFirebaseConfigured } from './config/firebase';
 import ToggleSwitch from './components/common/ToggleSwitch';
 import { mapPin } from './components/icons';
 
@@ -83,7 +83,78 @@ const viewTitles = {
   catalog: 'Catálogo',
 };
 
+// Componente de erro para quando o Firebase não está configurado
+const FirebaseErrorComponent = () => (
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      padding: '20px',
+      textAlign: 'center',
+      backgroundColor: '#f5f5f5',
+      fontFamily: 'Arial, sans-serif',
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: 'white',
+        padding: '30px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        maxWidth: '500px',
+      }}
+    >
+      <h1 style={{ color: '#e74c3c', marginBottom: '20px' }}>
+        ⚠️ Configuração Necessária
+      </h1>
+      <p style={{ fontSize: '16px', lineHeight: '1.6', marginBottom: '20px' }}>
+        O <strong>Economiza AI</strong> precisa das configurações do Firebase
+        para funcionar corretamente.
+      </p>
+      <div
+        style={{
+          backgroundColor: '#f8f9fa',
+          padding: '15px',
+          borderRadius: '5px',
+          marginBottom: '20px',
+          textAlign: 'left',
+        }}
+      >
+        <h3 style={{ marginTop: '0', color: '#495057' }}>Para configurar:</h3>
+        <ol style={{ margin: '0', paddingLeft: '20px' }}>
+          <li>
+            Crie um projeto no{' '}
+            <a
+              href='https://console.firebase.google.com'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Firebase Console
+            </a>
+          </li>
+          <li>Configure as variáveis de ambiente no Netlify</li>
+          <li>Adicione as credenciais do Firebase</li>
+        </ol>
+      </div>
+      <p style={{ fontSize: '14px', color: '#6c757d' }}>
+        <strong>Variáveis necessárias:</strong>
+        <br />
+        REACT_APP_FIREBASE_API_KEY, REACT_APP_FIREBASE_PROJECT_ID, etc.
+      </p>
+    </div>
+  </div>
+);
+
 function App() {
+  // Verificar se o Firebase está configurado
+  if (!isFirebaseConfigured) {
+    console.warn('Firebase não configurado - mostrando tela de erro');
+    return <FirebaseErrorComponent />;
+  }
+
   const [shoppingItems, setShoppingItems] = useState(() => {
     const savedItems = localStorage.getItem('shoppingItems');
     return savedItems ? JSON.parse(savedItems) : [];

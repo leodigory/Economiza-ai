@@ -7,6 +7,14 @@
   NPM_VERSION = "9"
   CI = "false"
   GENERATE_SOURCEMAP = "false"
+  # Variáveis de ambiente do Firebase (substitua pelos valores reais)
+  REACT_APP_FIREBASE_API_KEY = "your_firebase_api_key_here"
+  REACT_APP_FIREBASE_AUTH_DOMAIN = "your_project.firebaseapp.com"
+  REACT_APP_FIREBASE_PROJECT_ID = "your_project_id"
+  REACT_APP_FIREBASE_STORAGE_BUCKET = "your_project.appspot.com"
+  REACT_APP_FIREBASE_MESSAGING_SENDER_ID = "your_sender_id"
+  REACT_APP_FIREBASE_APP_ID = "your_app_id"
+  REACT_APP_FIREBASE_MEASUREMENT_ID = "your_measurement_id"
 
 [[headers]]
   for = "/*"
@@ -80,3 +88,17 @@
 [context.branch-deploy.environment]
   REACT_APP_ENV = "development"
   REACT_APP_API_URL = "https://api-dev.economiza-ai.com"
+
+# Configurações de erro
+[[redirects]]
+  from = "/404"
+  to = "/index.html"
+  status = 404
+
+# Configurações de segurança
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
