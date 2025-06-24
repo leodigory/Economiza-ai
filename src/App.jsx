@@ -149,12 +149,7 @@ const FirebaseErrorComponent = () => (
 );
 
 function App() {
-  // Verificar se o Firebase está configurado
-  if (!isFirebaseConfigured) {
-    console.warn('Firebase não configurado - mostrando tela de erro');
-    return <FirebaseErrorComponent />;
-  }
-
+  // Hooks devem ser chamados sempre, no topo
   const [shoppingItems, setShoppingItems] = useState(() => {
     const savedItems = localStorage.getItem('shoppingItems');
     return savedItems ? JSON.parse(savedItems) : [];
@@ -163,33 +158,23 @@ function App() {
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(0);
   const [isEditing, setIsEditing] = useState(null);
-
   const [stores, setStores] = useState([]);
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
-
   const [currentStore, setCurrentStore] = useState('');
   const [lastPurchaseData, setLastPurchaseData] = useState(null);
-
   const [favoriteStores, setFavoriteStores] = useState(() => {
     const savedFavorites = localStorage.getItem('favoriteStores');
     return savedFavorites ? new Set(JSON.parse(savedFavorites)) : new Set();
   });
-
   const [currentUser, setCurrentUser] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [userAddress, setUserAddress] = useState('');
-
-  // New layout states
   const [activeView, setActiveView] = useState('home');
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [isStoreEditMode, setIsStoreEditMode] = useState(false);
   const [selectedCatalogStore, setSelectedCatalogStore] = useState(null);
-
-  // New catalog states
   const [catalogProducts, setCatalogProducts] = useState([]);
   const [loadingCatalogProducts, setLoadingCatalogProducts] = useState(false);
-
-  // Hooks
   const { isDarkMode, toggleTheme, appRef } = useTheme();
   const debouncedInputValue = useDebounce(inputValue, 300);
   const { suggestions, clearSuggestions } =
@@ -197,7 +182,6 @@ function App() {
   const { isCapsLockOn } = useCapsLockDetection();
   const isMobile = useMobileDetection();
   const { fetchNearbyStores, loading: loadingNearby } = useNearbyStores();
-
   const [currentView, setCurrentView] = useState('home');
   const [userPermissions, setUserPermissions] = useState({
     role: userRoles.USER,
@@ -207,11 +191,16 @@ function App() {
   const [selectedStore, setSelectedStore] = useState(null);
   const [isUserManagementModalOpen, setIsUserManagementModalOpen] =
     useState(false);
-
   const [shoppingHistory, setShoppingHistory] = useState(() => {
     const saved = localStorage.getItem('shoppingHistory');
     return saved ? JSON.parse(saved) : [];
   });
+
+  // Verificar se o Firebase está configurado
+  if (!isFirebaseConfigured) {
+    console.warn('Firebase não configurado - mostrando tela de erro');
+    return <FirebaseErrorComponent />;
+  }
 
   const syncAndSetStores = useCallback(
     async (latitude, longitude) => {
