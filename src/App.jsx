@@ -196,14 +196,11 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Verificar se o Firebase está configurado
-  if (!isFirebaseConfigured) {
-    console.warn('Firebase não configurado - mostrando tela de erro');
-    return <FirebaseErrorComponent />;
-  }
-
+  // TODOS OS HOOKS DEVEM SER CHAMADOS AQUI, ANTES DE QUALQUER RETURN CONDICIONAL
   const syncAndSetStores = useCallback(
     async (latitude, longitude) => {
+      if (!isFirebaseConfigured) return; // Early return dentro do hook
+
       const processedStores = new Map();
 
       // 1. Buscar todas as lojas do nosso banco de dados
@@ -292,11 +289,13 @@ function App() {
         }, i * 3000); // 3 segundos entre cada busca
       }
     },
-    [fetchNearbyStores]
+    [fetchNearbyStores, isFirebaseConfigured]
   );
 
   // Efeito para observar o estado de autenticação do Firebase e definir o usuário
   useEffect(() => {
+    if (!isFirebaseConfigured) return; // Early return dentro do hook
+
     const unsubscribe = onAuthStateChanged(auth, async user => {
       setCurrentUser(user);
 
@@ -427,16 +426,7 @@ function App() {
       }
     });
     return () => unsubscribe(); // Limpa o observador ao desmontar
-  }, [syncAndSetStores]);
-
-  const handleLogin = async () => {
-    await signInWithGoogle();
-  };
-
-  const handleLogout = async () => {
-    await signOutFromGoogle();
-    // O onAuthStateChanged vai limpar o estado
-  };
+  }, [syncAndSetStores, isFirebaseConfigured]);
 
   const handleAddItem = useCallback(
     itemData => {
@@ -544,6 +534,21 @@ function App() {
       saveFavoriteStores(currentUser.uid, Array.from(favoriteStores));
     }
   }, [favoriteStores, currentUser]);
+
+  // Verificar se o Firebase está configurado - DEPOIS de todos os hooks
+  if (!isFirebaseConfigured) {
+    console.warn('Firebase não configurado - mostrando tela de erro');
+    return <FirebaseErrorComponent />;
+  }
+
+  const handleLogin = async () => {
+    await signInWithGoogle();
+  };
+
+  const handleLogout = async () => {
+    await signOutFromGoogle();
+    // O onAuthStateChanged vai limpar o estado
+  };
 
   const handleToggleFavorite = storeId => {
     setFavoriteStores(prevFavorites => {
