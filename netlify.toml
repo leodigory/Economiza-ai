@@ -1,10 +1,12 @@
 [build]
   publish = "build"
-  command = "npm run build"
+  command = "npm run build:prod"
 
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
+  CI = "false"
+  GENERATE_SOURCEMAP = "false"
 
 [[headers]]
   for = "/*"
@@ -69,12 +71,12 @@
 
 [context.production.environment]
   REACT_APP_ENV = "production"
-  REACT_APP_API_URL = "https://api.tecladovirtual.com"
+  REACT_APP_API_URL = "https://api.economiza-ai.com"
 
 [context.deploy-preview.environment]
   REACT_APP_ENV = "preview"
-  REACT_APP_API_URL = "https://api-preview.tecladovirtual.com"
+  REACT_APP_API_URL = "https://api-preview.economiza-ai.com"
 
 [context.branch-deploy.environment]
   REACT_APP_ENV = "development"
-  REACT_APP_API_URL = "https://api-dev.tecladovirtual.com" 
+  REACT_APP_API_URL = "https://api-dev.economiza-ai.com"
