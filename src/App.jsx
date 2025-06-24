@@ -356,7 +356,6 @@ function App() {
             .filter(Boolean)
             .join(', ');
           setUserAddress(displayAddress);
-
           // Geocodificação: Endereço -> Coordenadas
           try {
             const query = `street=${encodeURIComponent(
@@ -389,7 +388,6 @@ function App() {
               async position => {
                 const { latitude, longitude } = position.coords;
                 syncAndSetStores(latitude, longitude);
-
                 // Geocodificação Reversa: Coordenadas -> Endereço
                 try {
                   const geoRes = await fetch(
