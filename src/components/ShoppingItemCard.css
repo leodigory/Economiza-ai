@@ -1,0 +1,153 @@
+.shopping-item-card {
+  background-color: #232b3b;
+  border-radius: 16px;
+  margin: 0.75rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  border-left: 5px solid #8e44ad; /* Roxo para pendentes */
+  color: #232b3b;
+}
+
+.shopping-item-card.checked {
+  opacity: 1;
+  background-color: #1a2332;
+  border-left: 5px solid #28a745 !important; /* Verde para comprados */
+  filter: none;
+}
+
+.card-main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem 0.5rem 1rem;
+  cursor: pointer;
+  gap: 1rem;
+  width: 100%;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.item-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+.item-details {
+  font-size: 0.92rem;
+  color: #b7bed6;
+}
+
+.item-pricing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  margin-left: 2.5rem;
+  margin-right: 0.5rem;
+}
+
+.item-unit-price {
+  font-size: 0.98rem;
+  color: #a0e7b2;
+  font-weight: 500;
+}
+
+.item-total-price {
+  font-weight: 700;
+  font-size: 1.13rem;
+  color: #ffe066;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.remove-btn {
+  background: #dc3545;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.12);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.remove-btn:hover {
+  background: #a71d2a;
+}
+
+/* Dark theme - reforço */
+.app-container:not(.dark) .shopping-item-card {
+  background-color: #f4f4f4;
+  color: #232b3b;
+}
+.app-container.dark .shopping-item-card {
+  background-color: #232b3b;
+  color: #f7fafc;
+  border-left: 5px solid #8e44ad;
+}
+.app-container.dark .shopping-item-card.checked {
+  background-color: #1a2332;
+  border-left: 5px solid #28a745 !important;
+}
+.app-container.dark .item-name {
+  color: #fff;
+}
+.app-container.dark .item-details {
+  color: #b7bed6;
+}
+.app-container.dark .item-unit-price {
+  color: #a0e7b2;
+}
+.app-container.dark .item-total-price {
+  color: #ffe066;
+}
+
+.app-container:not(.dark) .item-name,
+.app-container:not(.dark) .item-unit-price,
+.app-container:not(.dark) .item-total-price {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+.app-container:not(.dark) .item-unit-price {
+  color: #888;
+  font-weight: 500;
+}
+.app-container:not(.dark) .item-total-price {
+  color: #111;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .shopping-item-card {
+    margin: 0.5rem 0.2rem;
+    border-radius: 12px;
+    padding: 0;
+  }
+  .card-main-content {
+    padding: 0.7rem 0.7rem 0.3rem 0.7rem;
+  }
+  .card-actions {
+    padding: 0.4rem 0.7rem 0.5rem 0.7rem;
+  }
+}

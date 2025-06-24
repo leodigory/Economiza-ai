@@ -9,7 +9,7 @@
     <meta name="keywords" content="teclado virtual, digitação, sugestões, to-do list, acessibilidade, react, javascript" />
     <meta name="author" content="Leonardo Araujo" />
     <meta name="robots" content="index, follow" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tecladovirtualtodolist.netlify.app/" />
@@ -27,23 +27,20 @@
     <!-- PWA -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="%PUBLIC_URL%/br-utf8.txt" as="fetch" crossorigin />
-    <link rel="preload" href="%PUBLIC_URL%/br-sem-acentos.txt" as="fetch" crossorigin />
-    
-    <title>Teclado Virtual - Digitação Inteligente</title>
-    
+
+    <title>Economiza Ai</title>
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -70,7 +67,7 @@
   <body>
     <noscript>Você precisa habilitar o JavaScript para executar este aplicativo.</noscript>
     <div id="root"></div>
-    
+
     <!-- Service Worker Registration -->
     <script>
       if ('serviceWorker' in navigator) {

@@ -1,0 +1,2 @@
+# Ignore o arquivo App.js que foi deletado para evitar erros de lint
+src/App.js

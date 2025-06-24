@@ -1,20 +1,28 @@
 // src/hooks/useCapsLockDetection.js
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
+const useCapsLockDetection = () => {
+  const [isCapsLockOn, setIsCapsLockOn] = useState(false);
 
-const useCapsLockDetection = (setCapsLock) => {
   useEffect(() => {
     const handleCapsLock = (event) => {
       if (event.getModifierState && event.getModifierState('CapsLock')) {
-        setCapsLock(prev => !prev);
+        setIsCapsLockOn(true);
+      } else {
+        setIsCapsLockOn(false);
       }
     };
 
     window.addEventListener('keydown', handleCapsLock);
+    window.addEventListener('keyup', handleCapsLock);
+
     return () => {
       window.removeEventListener('keydown', handleCapsLock);
+      window.removeEventListener('keyup', handleCapsLock);
     };
-  }, [setCapsLock]);
+  }, []);
+
+  return { isCapsLockOn };
 };
 
-export default useCapsLockDetection; // Exportação padrão
+export default useCapsLockDetection;

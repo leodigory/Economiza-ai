@@ -1,0 +1,232 @@
+.user-management {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 1rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-management-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.user-management-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.user-management-header p {
+  margin: 0;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.access-denied {
+  text-align: center;
+  padding: 2rem;
+}
+
+.access-denied h3 {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+.access-denied p {
+  color: #ccc;
+}
+
+.add-manager-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.add-manager-section h4 {
+  margin: 0 0 1rem 0;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.add-manager-form {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+}
+
+.form-group {
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.add-manager-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.add-manager-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.add-manager-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.managers-list-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.managers-list-section h4 {
+  margin: 0 0 1rem 0;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.no-managers {
+  text-align: center;
+  color: #ccc;
+  font-style: italic;
+  padding: 2rem;
+}
+
+.managers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.manager-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.manager-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.manager-name {
+  font-weight: 600;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.manager-email {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.manager-date {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.remove-manager-btn {
+  padding: 0.5rem 1rem;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.remove-manager-btn:hover:not(:disabled) {
+  background: #ff5252;
+  transform: translateY(-1px);
+}
+
+.remove-manager-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.message {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.message.success {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.message.error {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-management {
+    padding: 1rem;
+  }
+
+  .add-manager-form {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .manager-item {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .remove-manager-btn {
+    width: 100%;
+  }
+}

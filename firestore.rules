@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Regras para a coleção de usuários (exemplo: dados de perfil)
+    match /users/{userId}/{documents=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Regras para a coleção global e compartilhada de lojas
+    match /stores/{storeId} {
+      // Leitura: Qualquer usuário autenticado pode ler a lista de lojas.
+      allow read: if request.auth != null;
+
+      // Criação: Qualquer usuário autenticado pode adicionar uma nova loja.
+      allow create: if request.auth != null;
+
+      // Atualização e Exclusão: Apenas o usuário que criou a loja pode alterá-la ou excluí-la.
+      // O 'resource' se refere ao documento *antes* da alteração.
+      // O 'request.resource' ao documento *depois* da alteração.
+      allow update, delete: if request.auth != null && resource.data.addedBy == request.auth.uid;
+    }
+  }
+}

@@ -1,0 +1,653 @@
+.setting-item {
+  margin-bottom: 1.5rem;
+}
+
+.setting-item:last-child {
+  margin-bottom: 0;
+}
+
+.setting-item h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #343a40;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+.theme-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.drive-status p {
+  margin-top: 0;
+}
+
+.drive-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.drive-btn.connect {
+  background-color: #4285f4;
+  color: white;
+}
+.drive-btn.connect:hover {
+  background-color: #3367d6;
+}
+
+.drive-btn.disconnect {
+  background-color: #db4437;
+  color: white;
+}
+.drive-btn.disconnect:hover {
+  background-color: #c23327;
+}
+
+.app-container.dark .setting-item h4 {
+  color: #f7fafc;
+  border-bottom-color: #4a5568;
+}
+
+.account-view-container {
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.account-section {
+  background-color: #2c2f33; /* Fundo do card mais escuro */
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container:not(.dark) .account-section {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.section-title {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.75rem;
+  font-size: 1.3rem;
+  color: var(--color-text-primary);
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.setting-item h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+/* Location Inputs (Moved from StoreSelector) */
+.location-section {
+  text-align: center;
+}
+
+.location-inputs {
+  display: flex;
+  flex-direction: column; /* Organiza os inputs em coluna */
+  gap: 1rem; /* Espaçamento entre os inputs */
+  margin-bottom: 1rem;
+}
+
+.location-inputs select,
+.location-inputs input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-background);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.location-inputs select:disabled {
+  opacity: 0.5;
+}
+
+.location-inputs input:focus,
+.location-inputs select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--color-primary);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--color-primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Drive Buttons */
+.drive-status p {
+  margin: 0 0 1rem 0;
+}
+
+.drive-btn {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.drive-btn:hover {
+  transform: translateY(-2px);
+}
+
+.drive-btn.connect {
+  background-color: #4285f4;
+  color: white;
+}
+
+.drive-btn.disconnect {
+  background-color: #db4437;
+  color: white;
+}
+
+/* Estilos para a nova seção de Perfil/Login */
+.profile-section {
+  align-items: center;
+  gap: 0.8rem;
+  padding-top: 2.2rem;
+  padding-bottom: 2.2rem;
+}
+
+.profile-picture-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  width: 160px;
+  height: 160px;
+}
+
+.profile-picture {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color, #e91e63);
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-role-badge {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  z-index: 2;
+  padding: 0.13rem 0.7rem;
+  border-radius: 14px;
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.13);
+  background: #e53935;
+  min-width: 54px;
+  text-align: center;
+  white-space: nowrap;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .profile-picture-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+  }
+  .user-role-badge {
+    bottom: -6px;
+    background: #e53935;
+    border: none;
+  }
+}
+
+.profile-name {
+  margin: 0.2rem 0 0.1rem 0;
+  font-size: 1.18rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.profile-email {
+  color: #888;
+  margin-bottom: 1.1rem;
+  font-size: 0.93rem;
+  text-align: center;
+}
+
+.login-prompt h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.login-btn {
+  background-color: #4285f4; /* Cor do Google */
+  color: white;
+}
+
+.login-btn:hover {
+  background-color: #357ae8;
+}
+
+.auth-btn.logout-btn {
+  background-color: #e74c3c; /* Tom de vermelho */
+  color: white;
+  width: 100%; /* Ocupa a largura toda */
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+.location-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.location-btn {
+  margin-top: 0.5rem; /* Espaço acima do botão */
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  background: none;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.location-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.save-location-btn {
+  margin-top: 1rem;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+  transition: background-color 0.2s;
+}
+
+.save-location-btn:hover {
+  opacity: 0.9;
+}
+
+/* Estilos da Seção de Tema */
+.theme-section .setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.theme-section h4 {
+  margin: 0;
+}
+
+.street-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--suggestions-background, #fff);
+  border: 1px solid var(--border-color, #ccc);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.suggestions-list li {
+  padding: 0;
+  cursor: default;
+}
+
+.suggestions-list li:hover {
+  background-color: transparent;
+}
+
+.suggestion-item-btn {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.suggestion-item-btn:hover {
+  background-color: var(--primary-color-faded, #f0f0f0);
+}
+
+.admin-management-btn {
+  margin: 0.7rem 0 0.2rem 0;
+  box-shadow: 0 2px 12px rgba(233, 30, 99, 0.18);
+  font-size: 1rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 22px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .profile-section {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
+  .admin-management-btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Modal de Compartilhamento de Listas */
+.share-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-modal-content {
+  background: var(--glass-background, rgba(44, 52, 64, 0.98));
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  border-radius: 22px;
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 370px;
+  width: 95vw;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  transition: background 0.2s;
+}
+
+.app-container.dark .share-modal-content {
+  background: rgba(44, 52, 64, 0.98);
+}
+.app-container:not(.dark) .share-modal-content {
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.share-modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color, #764ba2);
+}
+
+.share-modal-content input[type='email'] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #bbb;
+  font-size: 1.08rem;
+  margin-bottom: 0.7rem;
+  background: var(--background-color, #232b3b);
+  color: var(--text-color, #fff);
+  transition: border 0.2s;
+}
+.app-container:not(.dark) .share-modal-content input[type='email'] {
+  background: #fff;
+  color: #232b3b;
+  border: 1.5px solid #ccc;
+}
+.share-modal-content input[type='email']:focus {
+  border: 1.5px solid #764ba2;
+  outline: none;
+}
+
+.share-modal-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+.share-modal-user img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+}
+.share-modal-user span {
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+
+.share-modal-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 0.7rem;
+  width: 100%;
+}
+.share-modal-btns button {
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.share-modal-btns .share-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  opacity: 1;
+  cursor: pointer;
+}
+.share-modal-btns .share-btn:disabled {
+  background: #bbb;
+  color: #fff;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.share-modal-btns .close-btn {
+  background: #eee;
+  color: #333;
+}
+
+/* Lista de compartilhados */
+.share-modal-shared-list {
+  margin-top: 1.2rem;
+  width: 100%;
+}
+.share-modal-shared-list h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: #764ba2;
+  text-align: center;
+}
+.share-modal-shared-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 7px 12px;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.app-container:not(.dark) .share-modal-shared-item {
+  background: rgba(118, 75, 162, 0.07);
+}
+.share-modal-shared-item .shared-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.share-modal-shared-item img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+}
+.share-modal-shared-item span {
+  font-weight: 500;
+  font-size: 0.98rem;
+}
+.share-modal-shared-item button {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: color 0.2s;
+}
+.share-modal-shared-item button:hover {
+  color: #c0392b;
+}
+
+@media (max-width: 600px) {
+  .share-modal-content {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+}

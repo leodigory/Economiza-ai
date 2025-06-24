@@ -1,0 +1,87 @@
+.mobile-header {
+  background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+  color: white;
+  padding: 1rem;
+  padding-top: calc(1rem + env(safe-area-inset-top));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  box-shadow: 0 4px 12px rgba(142, 68, 173, 0.4);
+  position: relative;
+  z-index: 10;
+}
+
+.mobile-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23FFFFFF" fill-opacity="0.05"><rect x="50" width="50" height="50" /><rect y="50" width="50" height="50" /></g></svg>');
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.header-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1;
+}
+
+.header-btn svg {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+}
+
+.app-container.dark .mobile-header {
+  background: linear-gradient(135deg, #3c1e4e 0%, #522a69 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--background-color-light);
+  color: var(--text-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-container.dark .app-header {
+    background-color: var(--background-color-light);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 10px;
+  line-height: 1;
+}
+
+.header-spacer {
+    width: 44px;
+}

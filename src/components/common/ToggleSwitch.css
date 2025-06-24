@@ -1,0 +1,93 @@
+/* ToggleSwitch.css - Modern Slider Redesign */
+.toggle-switch-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-label {
+  font-weight: 500;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  border: none; /* Reset do botão */
+  padding: 0; /* Reset do botão */
+}
+
+.toggle-switch.on {
+  background-color: var(--primary-color);
+}
+
+.toggle-slider {
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggle-switch.on .toggle-slider {
+  transform: translateX(22px);
+}
+
+.toggle-switch-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-switch-checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e0e0e0; /* Cinza claro bem definido para o modo claro */
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo do botão deslizante */
+.toggle-switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white; /* Botão sempre branco */
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.app-container.dark .toggle-switch-slider {
+    background-color: #39393d; /* Cinza escuro para a trilha no tema escuro */
+}
+
+.toggle-switch-checkbox:checked + .toggle-switch-slider {
+  background-color: #007aff; /* Cor azul padrão para o estado "ligado" */
+}
+
+.toggle-switch-checkbox:checked + .toggle-switch-slider:before {
+  transform: translateX(22px);
+}
