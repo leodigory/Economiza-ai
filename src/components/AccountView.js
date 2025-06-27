@@ -287,7 +287,7 @@ const AccountView = ({
                 alt={user.displayName}
                 className='profile-picture'
               />
-              {userPermissions?.role === userRoles?.ADMIN_SYSTEM && (
+              {userPermissions?.role && (
                 <div
                   className='user-role-badge'
                   style={{ backgroundColor: getRoleColor() }}

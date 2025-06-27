@@ -40,63 +40,65 @@ const getUserByEmail = async (email) => {
   }
 };
 
-// Promover usuário a Admin do sistema
+// Promover usuário a Admin
 const promoteToAdmin = async (email) => {
   try {
-    console.log(`🔍 Buscando usuário: ${email}`);
+    console.log(`Promovendo usuário ${email} a Admin do Sistema...`);
+
     const user = await getUserByEmail(email);
 
     if (!user) {
-      console.log(`⚠️ Usuário não encontrado. Criando novo usuário Admin...`);
+      console.log('Usuário não encontrado. Criando novo usuário admin...');
 
-      // Criar novo usuário como Admin
-      const usersRef = collection(db, 'users');
-      const newUserRef = doc(usersRef);
-
-      await setDoc(newUserRef, {
+      // Criar novo usuário admin
+      const newUser = {
+        uid: `admin_${Date.now()}`,
         email: email,
-        displayName: 'Leonardo Araújo',
+        displayName: email.split('@')[0],
         role: userRoles.ADMIN_SYSTEM,
         managedStoreId: null,
         createdAt: new Date(),
         updatedAt: new Date()
+      };
+
+      const userRef = doc(db, 'users', newUser.uid);
+      await setDoc(userRef, newUser);
+
+      console.log(`✅ Usuário ${email} criado e promovido a Admin do Sistema com sucesso!`);
+      return true;
+    } else {
+      console.log('Usuário encontrado. Atualizando permissões...');
+
+      // Atualizar usuário existente
+      const userRef = doc(db, 'users', user.id);
+      await updateDoc(userRef, {
+        role: userRoles.ADMIN_SYSTEM,
+        managedStoreId: null,
+        updatedAt: new Date()
       });
 
-      console.log(`🎉 Novo usuário Admin criado: ${email}`);
+      console.log(`✅ Usuário ${email} promovido a Admin do Sistema com sucesso!`);
       return true;
     }
-
-    console.log(`✅ Usuário encontrado: ${user.displayName || user.email}`);
-
-    const userRef = doc(db, 'users', user.id);
-    await updateDoc(userRef, {
-      role: userRoles.ADMIN_SYSTEM,
-      managedStoreId: null,
-      updatedAt: new Date()
-    });
-
-    console.log(`🎉 Usuário ${email} promovido a Admin do sistema com sucesso!`);
-    return true;
   } catch (error) {
-    console.error('❌ Erro ao promover usuário a Admin:', error);
+    console.error('❌ Erro ao promover usuário:', error);
     return false;
   }
 };
 
 // Executar a promoção
-const main = async () => {
-  const email = '01leonardoaraujo@gmail.com';
-  console.log(`🚀 Iniciando promoção de ${email} para Admin...`);
+const targetEmail = '01leonardoaraujo@gmail.com';
 
-  const success = await promoteToAdmin(email);
-
-  if (success) {
-    console.log('✅ Promoção concluída com sucesso!');
-  } else {
-    console.log('❌ Falha na promoção');
-  }
-
-  process.exit(0);
-};
-
-main();
+promoteToAdmin(targetEmail)
+  .then(success => {
+    if (success) {
+      console.log('🎉 Operação concluída com sucesso!');
+    } else {
+      console.log('❌ Falha na operação.');
+    }
+    process.exit(0);
+  })
+  .catch(error => {
+    console.error('❌ Erro inesperado:', error);
+    process.exit(1);
+  });
