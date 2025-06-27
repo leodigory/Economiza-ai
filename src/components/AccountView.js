@@ -282,11 +282,28 @@ const AccountView = ({
         {user ? (
           <>
             <div className='profile-picture-wrapper'>
-              <img
-                src={user.photoURL}
-                alt={user.displayName}
-                className='profile-picture'
-              />
+              {user.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt={user.displayName}
+                  className='profile-picture'
+                />
+              ) : (
+                <div
+                  className='profile-picture'
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: generateColor(user.displayName || user.email),
+                    color: '#fff',
+                    fontSize: 48,
+                    fontWeight: 700,
+                  }}
+                >
+                  {generateInitials(user.displayName || user.email)}
+                </div>
+              )}
               {userPermissions?.role === userRoles?.ADMIN_SYSTEM && (
                 <div
                   className='user-role-badge'

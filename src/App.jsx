@@ -300,6 +300,18 @@ function App() {
       setCurrentUser(user);
 
       if (user) {
+        // Sempre atualizar dados do usuário no Firestore, incluindo photoURL
+        await createOrUpdateUser({
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          role:
+            user.email === 'leonardo@email.com'
+              ? userRoles.ADMIN_SYSTEM
+              : userRoles.USER, // Leonardo como admin
+        });
+
         // Carregar dados completos do usuário
         const userData = await getUserByUid(user.uid);
         setUserData(userData);
