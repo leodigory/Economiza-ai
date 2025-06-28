@@ -12,6 +12,7 @@ O **Economiza AI** foi desenvolvido para transformar a experiência de compras e
 - **Listas de compras inteligentes** com persistência em Firebase
 - **Histórico detalhado** de todas as compras realizadas
 - **Sistema de preços** para comparação entre mercados
+- **Comparação inteligente** dos 4 supermercados mais próximos
 - **Interface responsiva** otimizada para mobile e desktop
 
 ---
@@ -57,9 +58,12 @@ graph TD
     F --> G[Cria/Edita Lista de Compras]
     G --> H[Adiciona Itens com Preços]
     H --> I[Salva no Firestore]
-    I --> J[Finaliza Compra]
-    J --> K[Salva no Histórico]
-    K --> L[Compara Preços Anteriores]
+    I --> J[Compara Preços nos 4 Mercados Mais Próximos]
+    J --> K[Mostra Economia Total]
+    K --> L[Salva Comparação no Histórico]
+    L --> M[Finaliza Compra]
+    M --> N[Salva no Histórico de Compras]
+    N --> O[Atualiza Histórico de Preços]
 ```
 
 ---
@@ -112,6 +116,173 @@ graph TD
 - **Acessibilidade** com navegação por teclado
 - **Loading states** e feedback visual
 
+### 🏪 **Comparação Inteligente de Preços** ⭐ **NOVA FUNCIONALIDADE**
+
+### 🎯 **Objetivo da Funcionalidade**
+
+O **Economiza AI** irá implementar um sistema inteligente de comparação de preços que analisa automaticamente os **4 supermercados mais próximos** da sua localização e calcula quanto você gastaria se comprasse sua lista completa em cada um deles, indicando qual oferece a **melhor economia total**.
+
+### 📊 **Como Funcionará**
+
+1. **Detecção Automática**: O app identifica os 4 supermercados mais próximos da sua localização
+2. **Análise de Preços**: Para cada item da sua lista, busca o preço mais recente em cada mercado
+3. **Cálculo Total**: Soma todos os preços para criar um total por mercado
+4. **Comparação Visual**: Mostra uma tabela comparativa com economia potencial
+5. **Recomendação**: Destaca o mercado que oferece a maior economia
+
+### 💡 **Exemplo Prático**
+
+**Sua Lista de Compras:**
+
+- Arroz (5kg) - 2 unidades
+- Feijão (1kg) - 3 pacotes
+- Óleo de Soja (900ml) - 2 unidades
+- Macarrão (500g) - 4 pacotes
+- Leite (1L) - 6 caixas
+
+**Comparação nos 4 Mercados Mais Próximos:**
+
+| Item          | Supermercado A | Supermercado B | Supermercado C | Supermercado D |
+| ------------- | -------------- | -------------- | -------------- | -------------- |
+| Arroz (2x)    | R$ 18,00       | R$ 16,50       | R$ 19,20       | R$ 17,80       |
+| Feijão (3x)   | R$ 15,00       | R$ 14,70       | R$ 16,50       | R$ 15,90       |
+| Óleo (2x)     | R$ 12,00       | R$ 11,80       | R$ 13,20       | R$ 12,60       |
+| Macarrão (4x) | R$ 8,00        | R$ 7,60        | R$ 8,80        | R$ 8,20        |
+| Leite (6x)    | R$ 24,00       | R$ 23,40       | R$ 25,80       | R$ 24,60       |
+| **TOTAL**     | **R$ 77,00**   | **R$ 74,00**   | **R$ 83,50**   | **R$ 79,10**   |
+
+**🎯 Resultado:**
+
+- **Melhor Opção**: Supermercado B - R$ 74,00
+- **Economia**: R$ 9,50 em relação ao mais caro
+- **Distância**: 1,2km da sua localização
+
+### 🔧 **Implementação Técnica**
+
+#### **Estrutura de Dados**
+
+```javascript
+// Comparação de preços por mercado
+const priceComparison = {
+  userLocation: { lat: -23.5505, lng: -46.6333 },
+  nearbyStores: [
+    {
+      id: 'store_1',
+      name: 'Supermercado A',
+      distance: 0.8, // km
+      totalPrice: 77.0,
+      items: [
+        { name: 'Arroz 5kg', quantity: 2, unitPrice: 9.0, total: 18.0 },
+        // ... outros itens
+      ],
+    },
+    // ... outros mercados
+  ],
+  bestOption: {
+    storeId: 'store_2',
+    totalSavings: 9.5,
+    percentageSavings: 11.4,
+  },
+};
+```
+
+#### **Algoritmo de Comparação**
+
+```javascript
+// Função principal de comparação
+const comparePrices = async (shoppingList, userLocation) => {
+  // 1. Buscar 4 mercados mais próximos
+  const nearbyStores = await getNearbyStores(userLocation, 4);
+
+  // 2. Para cada mercado, calcular preço total da lista
+  const comparisons = await Promise.all(
+    nearbyStores.map(async store => {
+      const totalPrice = await calculateTotalPrice(shoppingList, store.id);
+      return {
+        store,
+        totalPrice,
+        distance: calculateDistance(userLocation, store.coords),
+      };
+    })
+  );
+
+  // 3. Encontrar melhor opção
+  const bestOption = comparisons.reduce((best, current) =>
+    current.totalPrice < best.totalPrice ? current : best
+  );
+
+  // 4. Calcular economia
+  const maxPrice = Math.max(...comparisons.map(c => c.totalPrice));
+  const savings = maxPrice - bestOption.totalPrice;
+
+  return { comparisons, bestOption, savings };
+};
+```
+
+### 📱 **Interface do Usuário**
+
+#### **Tela de Comparação**
+
+- **Cards comparativos** para cada mercado
+- **Destaque visual** para a melhor opção
+- **Gráfico de barras** mostrando diferenças de preço
+- **Botão de navegação** para o mercado escolhido
+- **Histórico de comparações** salvo automaticamente
+
+#### **Recursos Visuais**
+
+- 🏆 **Badge "Melhor Preço"** no mercado vencedor
+- 💰 **Indicador de economia** em reais e porcentagem
+- 📍 **Distância** de cada mercado
+- ⏰ **Última atualização** dos preços
+- 🔄 **Atualizar preços** manualmente
+
+#### **Histórico de Comparações** 📊
+
+- **Salvamento automático** de todas as comparações realizadas
+- **Análise temporal** de economia ao longo do tempo
+- **Tendências de preços** por mercado e item
+- **Relatórios de economia** mensal e anual
+- **Comparação com compras anteriores** para acompanhar progresso
+
+### 🚀 **Roadmap de Implementação**
+
+#### **Fase 1 - Estrutura Base** ✅
+
+- [x] Sistema de mercados próximos
+- [x] Registro de preços por item
+- [x] Estrutura de dados no Firestore
+
+#### **Fase 2 - Comparação Básica** 🔄
+
+- [ ] Algoritmo de cálculo de totais
+- [ ] Interface de comparação
+- [ ] Destaque da melhor opção
+
+#### **Fase 3 - Recursos Avançados** 📋
+
+- [ ] Histórico de comparações
+- [ ] Alertas de variação de preço
+- [ ] Integração com APIs de preços
+- [ ] Sugestões de economia
+
+#### **Fase 4 - Otimizações** 🎯
+
+- [ ] Cache inteligente de preços
+- [ ] Machine Learning para previsões
+- [ ] Notificações de promoções
+- [ ] Integração com cupons
+
+### 💰 **Benefícios para o Usuário**
+
+- **Economia Real**: Economize até 15-20% em suas compras
+- **Tempo Poupança**: Não precisa visitar múltiplos mercados
+- **Decisão Informada**: Dados precisos para escolher o melhor local
+- **Histórico Inteligente**: Acompanhe variações de preço ao longo do tempo
+- **Localização Otimizada**: Foque nos mercados realmente próximos
+- **Acompanhamento Temporal**: Veja sua evolução de economia mês a mês
+- **Relatórios Detalhados**: Análise completa de gastos e economias
+
 ---
 
 ## 🗄️ **Estrutura do Banco de Dados (Firestore)**
@@ -133,6 +304,15 @@ graph TD
 ├── name, address, coords
 ├── logoUrl, website
 └── managers - Gerentes da loja
+
+/comparisons/{comparisonId}/ ⭐ NOVA COLEÇÃO
+├── userId - ID do usuário
+├── timestamp - Data/hora da comparação
+├── userLocation - Localização do usuário
+├── shoppingList - Lista de compras comparada
+├── comparisons - Resultados por mercado
+├── bestOption - Melhor opção encontrada
+└── metadata - Metadados da comparação
 ```
 
 ---
@@ -214,6 +394,14 @@ npm test
 - **OpenAI API** configurada
 - **Sugestões baseadas** em histórico
 - **Recomendações** de economia
+
+### 🏪 **Comparação Inteligente de Preços** ⭐ **EM DESENVOLVIMENTO**
+
+- **Algoritmo de comparação** dos 4 mercados mais próximos
+- **Cálculo automático** de economia total
+- **Interface comparativa** com cards visuais
+- **Histórico de comparações** para análise temporal
+- **Alertas de variação** de preços entre mercados
 
 ### 📱 **PWA Features**
 

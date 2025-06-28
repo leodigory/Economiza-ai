@@ -4,83 +4,68 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#667eea" />
-    <meta name="description" content="Teclado virtual moderno com sugestões inteligentes e to-do list integrada. Digite com conforto e gerencie tarefas em uma interface acessível e responsiva." />
-    <meta name="keywords" content="teclado virtual, digitação, sugestões, to-do list, acessibilidade, react, javascript" />
-    <meta name="author" content="Leonardo Araujo" />
-    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Economiza AI - Aplicativo de lista de compras inteligente com comparação de preços e gestão de mercados. Economize tempo e dinheiro com nossa ferramenta de comparação automática." />
+    <meta name="keywords" content="lista de compras, economia, comparação de preços, supermercados, react, javascript, firebase" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tecladovirtualtodolist.netlify.app/" />
-    <meta property="og:title" content="Teclado Virtual - Digitação Inteligente" />
-    <meta property="og:description" content="Teclado virtual moderno com sugestões inteligentes e to-do list integrada. Digite com conforto e gerencie tarefas em uma interface acessível e responsiva." />
+    <meta property="og:url" content="https://economiza-ai.netlify.app/" />
+    <meta property="og:title" content="Economiza AI - Lista de Compras Inteligente" />
+    <meta property="og:description" content="Economiza AI - Aplicativo de lista de compras inteligente com comparação de preços e gestão de mercados. Economize tempo e dinheiro com nossa ferramenta de comparação automática." />
     <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://tecladovirtualtodolist.netlify.app/" />
-    <meta property="twitter:title" content="Teclado Virtual - Digitação Inteligente" />
-    <meta property="twitter:description" content="Teclado virtual moderno com sugestões inteligentes e to-do list integrada. Digite com conforto e gerencie tarefas em uma interface acessível e responsiva." />
+    <meta property="twitter:url" content="https://economiza-ai.netlify.app/" />
+    <meta property="twitter:title" content="Economiza AI - Lista de Compras Inteligente" />
+    <meta property="twitter:description" content="Economiza AI - Aplicativo de lista de compras inteligente com comparação de preços e gestão de mercados. Economize tempo e dinheiro com nossa ferramenta de comparação automática." />
     <meta property="twitter:image" content="%PUBLIC_URL%/logo512.png" />
 
-    <!-- PWA -->
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="Economiza AI">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Economiza AI">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="msapplication-TileColor" content="#2B5797">
+    <meta name="msapplication-tap-highlight" content="no">
 
     <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://firestore.googleapis.com">
+    <link rel="preconnect" href="https://identitytoolkit.googleapis.com">
 
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-    <title>Economiza Ai</title>
+    <title>Economiza AI - Lista de Compras Inteligente</title>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Teclado Virtual",
-      "description": "Teclado virtual moderno com sugestões inteligentes e to-do list integrada",
-      "url": "https://tecladovirtualtodolist.netlify.app/",
+      "name": "Economiza AI",
+      "description": "Aplicativo de lista de compras inteligente com comparação de preços e gestão de mercados",
+      "url": "https://economiza-ai.netlify.app/",
       "applicationCategory": "ProductivityApplication",
       "operatingSystem": "Web Browser",
-      "author": {
-        "@type": "Person",
-        "name": "Leonardo Araujo",
-        "url": "https://github.com/leodigory"
-      },
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "USD"
+        "priceCurrency": "BRL"
       }
     }
     </script>
   </head>
   <body>
-    <noscript>Você precisa habilitar o JavaScript para executar este aplicativo.</noscript>
+    <noscript>Você precisa habilitar JavaScript para executar este aplicativo.</noscript>
     <div id="root"></div>
-
-    <!-- Service Worker Registration -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-              console.log('SW registered: ', registration);
-            })
-            .catch((registrationError) => {
-              console.log('SW registration failed: ', registrationError);
-            });
-        });
-      }
-    </script>
   </body>
 </html>

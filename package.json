@@ -1,8 +1,8 @@
 {
-  "name": "virtual_teclado",
-  "version": "1.0.0",
+  "name": "economiza-ai",
+  "version": "0.1.0",
   "private": true,
-  "description": "Teclado virtual moderno com sugestões inteligentes e to-do list integrada",
+  "description": "Aplicativo de lista de compras inteligente com comparação de preços e gestão de mercados",
   "keywords": [
     "react",
     "keyboard",
