@@ -471,7 +471,7 @@ function App() {
 
   const onKeyPress = useCallback(
     key => {
-      // Keyboard logic will now primarily affect the AddItemModal input
+      // Lógica de entrada de teclado para o modal de adicionar item
       if (isAddItemModalOpen) {
         if (key === 'Enter') {
           handleAddItem();

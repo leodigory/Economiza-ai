@@ -1,7 +1,7 @@
 {
-  "short_name": "Teclado Virtual",
-  "name": "Teclado Virtual - Digitação Inteligente",
-  "description": "Teclado virtual moderno com sugestões inteligentes e to-do list integrada",
+  "short_name": "Economiza AI",
+  "name": "Economiza AI - Lista de Compras Inteligente",
+  "description": "Aplicativo de lista de compras inteligente com comparação de preços e gestão de mercados",
   "icons": [
     {
       "src": "favicon.ico",
@@ -11,46 +11,44 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any maskable"
+      "sizes": "192x192"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#667eea",
-  "background_color": "#667eea",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "pt-BR",
-  "categories": ["productivity", "utilities", "accessibility"],
+  "categories": ["productivity", "shopping", "finance"],
   "screenshots": [
     {
-      "src": "screenshot-desktop.png",
-      "sizes": "1280x720",
+      "src": "logo512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Teclado Virtual no Desktop"
+      "label": "Economiza AI no Desktop"
     },
     {
-      "src": "screenshot-mobile.png",
-      "sizes": "390x844",
+      "src": "logo192.png",
+      "sizes": "192x192",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Teclado Virtual no Mobile"
+      "label": "Economiza AI no Mobile"
     }
   ],
   "shortcuts": [
     {
-      "name": "Nova Tarefa",
-      "short_name": "Tarefa",
-      "description": "Adicionar nova tarefa rapidamente",
-      "url": "/?action=new-task",
+      "name": "Nova Lista",
+      "short_name": "Nova Lista",
+      "description": "Criar uma nova lista de compras",
+      "url": "/?action=new-list",
       "icons": [
         {
           "src": "logo192.png",
@@ -59,10 +57,10 @@
       ]
     },
     {
-      "name": "Teclado Virtual",
-      "short_name": "Teclado",
-      "description": "Abrir teclado virtual",
-      "url": "/?action=keyboard",
+      "name": "Comparar Preços",
+      "short_name": "Comparar",
+      "description": "Comparar preços entre mercados",
+      "url": "/?action=compare",
       "icons": [
         {
           "src": "logo192.png",

@@ -38,17 +38,47 @@ const firebaseConfig = {
     defaultConfig.measurementId,
 };
 
+// Verificação de configuração para debug
+const checkFirebaseConfig = () => {
+  const requiredKeys = [
+    'REACT_APP_FIREBASE_API_KEY',
+    'REACT_APP_FIREBASE_AUTH_DOMAIN',
+    'REACT_APP_FIREBASE_PROJECT_ID',
+    'REACT_APP_FIREBASE_STORAGE_BUCKET',
+    'REACT_APP_FIREBASE_MESSAGING_SENDER_ID',
+    'REACT_APP_FIREBASE_APP_ID',
+  ];
+
+  const missingKeys = requiredKeys.filter(key => !process.env[key]);
+
+  if (missingKeys.length > 0) {
+    console.error('❌ Firebase Configuration Error:', {
+      missingKeys,
+      message: 'As seguintes variáveis de ambiente estão faltando:',
+      solution:
+        'Configure as variáveis no Netlify Dashboard ou arquivo .env.local',
+    });
+    return false;
+  }
+
+  console.log('✅ Firebase Config Status:', {
+    isConfigured: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    hasApiKey: !!process.env.REACT_APP_FIREBASE_API_KEY,
+    hasProjectId: !!process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    config: process.env.REACT_APP_ENV || 'Development',
+  });
+  return true;
+};
+
 // Verificar se as variáveis de ambiente estão configuradas
 const isFirebaseConfigured =
   process.env.REACT_APP_FIREBASE_API_KEY &&
   process.env.REACT_APP_FIREBASE_PROJECT_ID;
 
-console.log('Firebase Config Status:', {
-  isConfigured: isFirebaseConfigured,
-  hasApiKey: !!process.env.REACT_APP_FIREBASE_API_KEY,
-  hasProjectId: !!process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  config: isFirebaseConfigured ? 'Production' : 'Demo Mode',
-});
+// Verificar configuração antes de inicializar
+if (!checkFirebaseConfig()) {
+  console.warn('Firebase configuration is incomplete. Running in demo mode.');
+}
 
 // Initialize Firebase
 let app, auth, db, googleProvider;

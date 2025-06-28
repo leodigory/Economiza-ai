@@ -261,19 +261,22 @@ input:checked + .slider:before {
   bottom: -10px;
   transform: translateX(-50%);
   z-index: 2;
-  padding: 0.13rem 0.7rem;
-  border-radius: 14px;
+  padding: 0.7rem 1.2rem;
+  border-radius: 22px;
   color: white;
-  font-size: 0.68rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.13);
-  background: #e53935;
-  min-width: 54px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  min-width: 120px;
   text-align: center;
   white-space: nowrap;
   border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
 @media (max-width: 600px) {
@@ -287,8 +290,9 @@ input:checked + .slider:before {
   }
   .user-role-badge {
     bottom: -6px;
-    background: #e53935;
-    border: none;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    min-width: 100px;
   }
 }
 

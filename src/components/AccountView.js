@@ -304,7 +304,7 @@ const AccountView = ({
                   {generateInitials(user.displayName || user.email)}
                 </div>
               )}
-              {userPermissions?.role === userRoles?.ADMIN_SYSTEM && (
+              {userPermissions?.role && (
                 <div
                   className='user-role-badge'
                   style={{ backgroundColor: getRoleColor() }}

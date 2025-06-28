@@ -17,7 +17,7 @@
   - Campo de quantidade (número inteiro)
   - Campo de valor (decimal com 2 casas)
   - Validação de entrada
-  - Teclado virtual integrado
+  - Interface otimizada para mobile
 
 - **Gerenciamento de Itens**
   - Toggle para marcar como concluído
@@ -104,8 +104,7 @@ src/
 │   ├── StoreSelector/     # Seleção de estabelecimento
 │   ├── ShoppingList/      # Lista de compras principal
 │   ├── TextArea/          # Área de entrada de dados
-│   ├── Message/           # Sistema de mensagens
-│   └── Keyboard/          # Teclado virtual
+│   └── Message/           # Sistema de mensagens
 ├── hooks/                 # Hooks customizados
 ├── config/               # Configurações de APIs
 └── App.jsx              # Componente principal
@@ -114,7 +113,6 @@ src/
 ### 🔧 Hooks Customizados
 - **useTheme** - Gerenciamento de tema escuro/claro
 - **useApiSuggestions** - Sugestões automáticas
-- **useKeyboard** - Lógica do teclado virtual
 - **useMobileDetection** - Detecção de dispositivo móvel
 
 ### 🎯 Estados Principais
@@ -129,18 +127,18 @@ src/
 - Layout em grid com 4 colunas
 - Menu superior completo
 - Barra de progresso lateral
-- Teclado virtual completo
+- Interface completa
 
 ### Tablet (768px - 1199px)
 - Layout adaptativo
 - Menu superior compacto
 - Grid de 2 colunas
-- Teclado virtual otimizado
+- Interface otimizada
 
 ### Mobile (320px - 767px)
 - Layout em coluna única
 - Menu superior empilhado
-- Teclado virtual touch-friendly
+- Interface touch-friendly
 - Modais otimizados
 
 ## 🎨 Design System
@@ -198,12 +196,6 @@ src/
 ### Versão 1.2
 - [ ] Categorização de produtos
 - [ ] Alertas de promoções
-- [ ] Sincronização em tempo real
-
-### Versão 1.3
-- [ ] IA para sugestões inteligentes
-- [ ] Analytics avançados
-- [ ] Integração com outros apps
 
 ## 🐛 Bugs Conhecidos
 
