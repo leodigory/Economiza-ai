@@ -476,4 +476,39 @@ export const saveHistoryList = async (userId, historyList) => {
   }
 };
 
+// Verificar se é o primeiro usuário e promover a admin
+export const checkAndPromoteFirstUser = async (uid, email, displayName, photoURL) => {
+  try {
+    // Verificar se já existe algum usuário no sistema
+    const usersRef = collection(db, 'users');
+    const querySnapshot = await getDocs(usersRef);
+
+    if (querySnapshot.empty) {
+      // É o primeiro usuário - promover a admin
+      console.log('🎉 Primeiro usuário detectado! Promovendo a Admin do Sistema...');
+
+      const userData = {
+        uid,
+        email,
+        displayName,
+        photoURL,
+        role: userRoles.ADMIN_SYSTEM,
+        managedStoreId: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        isFirstUser: true
+      };
+
+      await createOrUpdateUser(userData);
+      console.log(`✅ Usuário ${email} promovido automaticamente a Admin do Sistema!`);
+      return userData;
+    }
+
+    return null; // Não é o primeiro usuário
+  } catch (error) {
+    console.error('Erro ao verificar primeiro usuário:', error);
+    return null;
+  }
+};
+
 export { db };

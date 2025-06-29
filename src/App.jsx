@@ -42,6 +42,7 @@ import {
   checkUserPermissions,
   userRoles,
   saveHistoryList,
+  checkAndPromoteFirstUser,
 } from './config/firestore';
 
 // Hooks
@@ -300,38 +301,51 @@ function App() {
       setCurrentUser(user);
 
       if (user) {
-        // Sempre atualizar dados do usuário no Firestore, incluindo photoURL
-        await createOrUpdateUser({
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName,
-          photoURL: user.photoURL,
-          role:
-            user.email === 'leonardo@email.com'
-              ? userRoles.ADMIN_SYSTEM
-              : userRoles.USER, // Leonardo como admin
-        });
+        // Verificar se é o primeiro usuário e promover a admin se necessário
+        const firstUserData = await checkAndPromoteFirstUser(
+          user.uid,
+          user.email,
+          user.displayName,
+          user.photoURL
+        );
 
-        // Carregar dados completos do usuário
-        const userData = await getUserByUid(user.uid);
-        setUserData(userData);
-
-        // Verificar permissões
-        const permissions = await checkUserPermissions(user.uid);
-        setUserPermissions(permissions);
-
-        // Criar/atualizar usuário no Firestore se não existir
-        if (!userData) {
-          await createOrUpdateUser({
-            uid: user.uid,
-            email: user.email,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
-            role:
-              user.email === 'leonardo@email.com'
-                ? userRoles.ADMIN_SYSTEM
-                : userRoles.USER, // Leonardo como admin
+        if (firstUserData) {
+          // Se foi promovido a admin, usar os dados retornados
+          setUserData(firstUserData);
+          setUserPermissions({
+            role: userRoles.ADMIN_SYSTEM,
+            canEdit: true,
+            canManageUsers: true,
+            canManageSystem: true,
           });
+        } else {
+          // Verificar se o usuário já existe e tem role específica
+          const existingUser = await getUserByUid(user.uid);
+
+          if (existingUser) {
+            // Usuário já existe - usar dados existentes
+            setUserData(existingUser);
+            const permissions = await checkUserPermissions(user.uid);
+            setUserPermissions(permissions);
+          } else {
+            // Usuário novo - criar com role padrão
+            const userData = {
+              uid: user.uid,
+              email: user.email,
+              displayName: user.displayName,
+              photoURL: user.photoURL,
+              role: userRoles.USER, // Role padrão para novos usuários
+            };
+
+            await createOrUpdateUser(userData);
+            setUserData(userData);
+            setUserPermissions({
+              role: userRoles.USER,
+              canEdit: false,
+              canManageUsers: false,
+              canManageSystem: false,
+            });
+          }
         }
 
         // Carregar dados não relacionados à localização
