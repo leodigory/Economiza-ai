@@ -7,6 +7,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { getAnalytics } from 'firebase/analytics';
 
 // Configuração padrão para desenvolvimento (fallback)
 const defaultConfig = {
@@ -81,7 +82,7 @@ if (!checkFirebaseConfig()) {
 }
 
 // Initialize Firebase
-let app, auth, db, googleProvider;
+let app, auth, db, googleProvider, analytics;
 
 try {
   app = initializeApp(firebaseConfig);
@@ -89,17 +90,35 @@ try {
   db = getFirestore(app);
   googleProvider = new GoogleAuthProvider();
 
-  console.log('Firebase inicializado com sucesso!');
+  // Configurar escopo do Google OAuth
+  googleProvider.addScope('email');
+  googleProvider.addScope('profile');
+
+  analytics = getAnalytics(app);
+
+  console.log('✅ Firebase inicializado com sucesso!', {
+    projectId: firebaseConfig.projectId,
+    authDomain: firebaseConfig.authDomain,
+    hasApiKey: !!firebaseConfig.apiKey,
+  });
 } catch (error) {
-  console.error('Erro ao inicializar Firebase:', error);
+  console.error('❌ Erro ao inicializar Firebase:', error);
 
   // Fallback para modo demo
-  app = initializeApp(defaultConfig);
-  auth = getAuth(app);
-  db = getFirestore(app);
-  googleProvider = new GoogleAuthProvider();
+  try {
+    app = initializeApp(defaultConfig);
+    auth = getAuth(app);
+    db = getFirestore(app);
+    googleProvider = new GoogleAuthProvider();
+    analytics = getAnalytics(app);
 
-  console.log('Firebase inicializado em modo demo');
+    console.log('🔄 Firebase inicializado em modo demo');
+  } catch (fallbackError) {
+    console.error(
+      '❌ Erro crítico ao inicializar Firebase em modo demo:',
+      fallbackError
+    );
+  }
 }
 
 // Função de Sign-in
@@ -116,11 +135,44 @@ const signInWithGoogle = async () => {
       };
     }
 
+    console.log('🔄 Iniciando login com Google...');
     const result = await signInWithPopup(auth, googleProvider);
-    console.log('Login com Google bem-sucedido!', result.user);
+    console.log('✅ Login com Google bem-sucedido!', {
+      user: result.user.displayName,
+      email: result.user.email,
+      uid: result.user.uid,
+    });
     return result.user;
   } catch (error) {
-    console.error('Erro no login com Google:', error.message);
+    console.error('❌ Erro no login com Google:', {
+      code: error.code,
+      message: error.message,
+      email: error.email,
+      credential: error.credential,
+    });
+
+    // Tratamento específico de erros comuns
+    switch (error.code) {
+      case 'auth/popup-closed-by-user':
+        console.log('Usuário fechou o popup de login');
+        break;
+      case 'auth/popup-blocked':
+        console.error(
+          'Popup bloqueado pelo navegador. Verifique as configurações de popup.'
+        );
+        break;
+      case 'auth/unauthorized-domain':
+        console.error(
+          'Domínio não autorizado. Adicione o domínio no Firebase Console.'
+        );
+        break;
+      case 'auth/api-key-not-valid':
+        console.error('API Key inválida. Verifique as variáveis de ambiente.');
+        break;
+      default:
+        console.error('Erro desconhecido no login:', error.code);
+    }
+
     return null;
   }
 };
@@ -134,9 +186,9 @@ const signOutFromGoogle = async () => {
     }
 
     await signOut(auth);
-    console.log('Logout bem-sucedido!');
+    console.log('✅ Logout bem-sucedido!');
   } catch (error) {
-    console.error('Erro no logout:', error.message);
+    console.error('❌ Erro no logout:', error.message);
   }
 };
 
@@ -152,4 +204,6 @@ export {
   signOutFromGoogle,
   isFirebaseReady,
   isFirebaseConfigured,
+  app,
+  analytics,
 };
