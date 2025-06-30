@@ -42,14 +42,14 @@ body {
 .content-area {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto;
   padding: 0;
   gap: 0;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   overflow-y: auto;
-  padding-bottom: 20px; /* Espaço extra antes da barra de progresso */
+  padding-bottom: 70px; /* altura da barra inferior + safe area */
 }
 
 /* Responsividade */
