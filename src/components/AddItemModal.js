@@ -326,6 +326,32 @@ const AddItemModal = ({
           >
             Total: {total}
           </div>
+
+          {/* Botão Adicionar Item dentro do modal */}
+          <button
+            className='add-item-modal-btn'
+            type='button'
+            style={{
+              width: '100%',
+              marginTop: 24,
+              padding: '1rem',
+              fontSize: '1.1rem',
+              fontWeight: 700,
+              borderRadius: 8,
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: '#fff',
+              border: 'none',
+              cursor: inputValue && price ? 'pointer' : 'not-allowed',
+              opacity: inputValue && price ? 1 : 0.6,
+              transition: 'background 0.2s, opacity 0.2s',
+              boxShadow: '0 2px 8px rgba(102, 126, 234, 0.13)',
+              textAlign: 'center',
+            }}
+            disabled={!inputValue || !price}
+            onClick={handleAddItem}
+          >
+            Adicionar Item
+          </button>
         </div>
       </div>
     </div>
