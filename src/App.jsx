@@ -69,6 +69,9 @@ import AccountView from './components/AccountView';
 import HistoryView from './components/HistoryView';
 import UserManagement from './components/UserManagement';
 
+// PWA Components
+import PWAUpdatePrompt from './components/PWAUpdatePrompt';
+
 // CSS
 import './App.css';
 
@@ -966,6 +969,9 @@ function App() {
         onClose={() => setIsUserManagementModalOpen(false)}
         currentUser={currentUser}
       />
+
+      {/* PWA Update Prompt */}
+      <PWAUpdatePrompt />
     </div>
   );
 }
